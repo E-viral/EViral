@@ -47,26 +47,43 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
     });
   };
 
+  const formatEuro = (value: number) => {
+    const fractionDigits = Number.isInteger(value) ? 0 : 2;
+    return value.toLocaleString('de-DE', {
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: 2,
+    });
+  };
+
   return (
     <>
       {/* Toggle */}
       <AnimatedSection>
-        <div className="flex items-center justify-center gap-4 mb-10">
-          <span className={`text-sm font-semibold transition-colors ${!yearly ? 'text-[var(--black)]' : 'text-[var(--muted)]'}`}>
-            Monthly
-          </span>
-          <button
-            onClick={() => {
-              setYearly((prev) => !prev);
-              setCtaErrors({});
-            }}
-            className={`relative w-14 h-7 rounded-full transition-all duration-300 focus:outline-none ${yearly ? 'bg-[var(--black)]' : 'bg-[var(--border2)]'}`}
-          >
-            <span className={`absolute top-0.5 w-6 h-6 rounded-full bg-white shadow-md transition-all duration-300 ${yearly ? 'translate-x-7' : 'translate-x-0.5'}`} />
-          </button>
-          <span className={`text-sm font-semibold transition-colors ${yearly ? 'text-[var(--black)]' : 'text-[var(--muted)]'}`}>
-            Yearly
-          </span>
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <div className="inline-flex items-center p-1 rounded-full bg-[var(--surface2)] border border-[var(--border2)]">
+            <button
+              type="button"
+              onClick={() => {
+                setYearly(false);
+                setCtaErrors({});
+              }}
+              className={`h-9 px-4 rounded-full text-sm font-semibold transition-all duration-200 ${!yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
+              aria-pressed={!yearly}
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setYearly(true);
+                setCtaErrors({});
+              }}
+              className={`h-9 px-4 rounded-full text-sm font-semibold transition-all duration-200 ${yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
+              aria-pressed={yearly}
+            >
+              Yearly
+            </button>
+          </div>
           {yearly && (
             <span className="badge-accent text-[10px] animate-[fadeIn_0.3s_ease_both]">Save ~10%</span>
           )}
@@ -77,7 +94,11 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
         {plans.map((plan, i) => {
           const isFeatured = !!plan.badge;
           const billingMode: BillingMode = yearly ? 'yearly' : 'monthly';
-          const price = yearly && plan.yearlyPrice ? plan.yearlyPrice : plan.price;
+          const monthlyPrice = plan.price;
+          const effectiveYearlyMonthlyPrice = plan.yearlyPrice ?? Number((plan.price * 0.9).toFixed(2));
+          const effectiveYearlyAnnualPrice = Number((effectiveYearlyMonthlyPrice * 12).toFixed(2));
+          const price = yearly ? effectiveYearlyMonthlyPrice : monthlyPrice;
+          const billingLabel = '/mo';
           const checkoutHref = paymentLinks?.[plan.name]?.[billingMode];
           const planError = ctaErrors[plan.name];
           const ctaClassName = `flex items-center justify-center gap-2 w-full h-12 rounded-xl font-bold text-sm flex-shrink-0 whitespace-nowrap transition-all duration-200
@@ -113,21 +134,26 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
                   </div>
 
                   {/* Price — fixed height so all cards stay aligned */}
-                  <div className="mb-6 h-24">
+                  <div className="mb-6 h-28">
                     <div className="flex items-end gap-1 mb-1">
                       <span className={`text-5xl font-black tracking-tighter leading-none ${isFeatured ? 'text-white' : ''}`}>
-                        €{price % 1 === 0 ? price : price.toFixed(2).replace('.', ',')}
+                        €{formatEuro(price)}
                       </span>
-                      <span className={`text-sm pb-1 ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>/mo</span>
+                      <span className={`text-sm pb-1 ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>{billingLabel}</span>
                     </div>
+                    {yearly && (
+                      <p className={`text-xs ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>
+                        €{formatEuro(effectiveYearlyAnnualPrice)} /year billed annually
+                      </p>
+                    )}
                     {showSetupFee && plan.setupFee && (
                       <p className={`text-xs ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>
                         + €{plan.setupFee} {typeof window !== 'undefined' && document.documentElement.lang === 'de' ? 'einmalig' : 'setup fee'}
                       </p>
                     )}
-                    {yearly && plan.yearlyPrice && (
+                    {yearly && effectiveYearlyMonthlyPrice < monthlyPrice && (
                       <p className="text-xs text-green-500 font-semibold mt-1">
-                        Save €{Math.round((plan.price - plan.yearlyPrice) * 12)}/yr
+                        Save €{Math.round((monthlyPrice - effectiveYearlyMonthlyPrice) * 12)}/yr
                       </p>
                     )}
                   </div>

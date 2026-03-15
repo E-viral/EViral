@@ -7,83 +7,15 @@ import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import Link from 'next/link';
+import { reputationPlanContent } from '../../../../lib/reputation-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return { title: locale === 'de' ? 'Reputationsmanagement' : 'Reputation Management' };
 }
 
-const BASIC_DESC = `EViRAL Basic Bewertung
-Professionelles Online-Reputationsmanagement für Unternehmen
-
-1. Produktüberblick
-EViRAL Basic Bewertung ist eine cloudbasierte Softwarelösung zur professionellen Verwaltung und Optimierung Ihrer Online-Reputation. Die Plattform ermöglicht Unternehmen eine zentrale, strukturierte und effiziente Steuerung sämtlicher Bewertungsprozesse.
-
-2. Plattform-Integration
-• Google Business Profil
-• Facebook
-• Booking.com
-
-3. Leistungsumfang
-• 100 E-Mail-Bewertungsanfragen pro Monat
-• 30 SMS-Bewertungsanfragen pro Monat
-• Zentrales Bewertungs-Dashboard
-• KI-gestützte Antwortfunktion
-• 1 Unternehmensstandort
-• Monatliche Bewertungsberichte
-
-4. Preise & Vertragsbedingungen
-Preis: 49,90 € pro Monat
-Mindestvertragslaufzeit: 24 Monate
-Kündigungsfrist: 3 Monate vor Ablauf`;
-
-const PRO_DESC = `EViRAL Pro KI System
-Intelligentes Online-Reputationsmanagement mit erweiterter KI-Analyse
-
-1. Produktüberblick
-EViRAL PRO kombiniert Echtzeit-Monitoring, KI-gestützte Bewertungsbeantwortung sowie tiefgehende Datenanalysen in einem zentralen Dashboard.
-
-2. Plattform-Integrationen
-• Google Business Profil
-• Facebook
-• Yelp
-• Booking.com
-• TripAdvisor
-
-3. Funktionen & Leistungsumfang
-• 300 E-Mail-Anfragen pro Monat
-• 50 SMS-Anfragen pro Monat
-• KI-Agent für Bewertungsbeantwortung
-• Erweiterte KI-Analysen
-• Gmail-Integration
-• Priorisierter E-Mail-Support
-
-4. Preise & Vertragsbedingungen
-Preis: 99,90 € pro Monat
-Mindestvertragslaufzeit: 24 Monate`;
-
-const PREMIUM_DESC = `EViRAL Premium System
-Die umfassendste Lösung für vollautomatisiertes Reputationsmanagement
-
-1. Produktüberblick
-Das EViRAL Premium-System ist die leistungsstärkste Lösung – für Unternehmen mit mehreren Standorten, hoher Bewertungsaktivität oder strategischem Anspruch.
-
-2. Plattform-Integrationen
-15+ Plattformen inkl. Airbnb, Trustpilot, Glassdoor, Kununu, Indeed, Google Play, App Store, Jameda, BBB, Zillow, Expedia, Agoda, Consumer Affairs
-
-3. Funktionen & Leistungsumfang
-• 500 E-Mail-Anfragen pro Monat
-• 75 SMS-Anfragen pro Monat
-• Vollautomatischer KI-Agent
-• Bis zu 3 Standorte
-• NFC-Karten + QR-Code Integration
-• Wettbewerbs-Benchmarking
-
-4. Preise & Vertragsbedingungen
-Preis: 169,90 € pro Monat
-Mindestvertragslaufzeit: 24 Monate`;
-
 export default function ReputationPage({ params: { locale } }: { params: { locale: string } }) {
   const isDE = locale === 'de';
+  const localeKey: 'de' | 'en' = isDE ? 'de' : 'en';
 
   const steps = isDE ? [
     { icon: '🔗', title: 'Plattformen verbinden', desc: 'Google, Yelp und weitere in Minuten verknüpfen' },
@@ -102,7 +34,8 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       name: 'Basic',
       price: 49.90,
       yearlyPrice: 44,
-      description: BASIC_DESC,
+      description: reputationPlanContent.basic.fullDescription[localeKey],
+      cardHighlights: reputationPlanContent.basic.cardHighlights[localeKey],
       features: [
         { label: isDE ? '3 Bewertungsplattformen' : '3 review platforms', included: true },
         { label: isDE ? '100 E-Mail-Anfragen/Monat' : '100 email requests/month', included: true },
@@ -120,7 +53,8 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       price: 99.90,
       yearlyPrice: 89,
       badge: isDE ? 'Beliebteste Wahl' : 'Most Popular',
-      description: PRO_DESC,
+      description: reputationPlanContent.pro.fullDescription[localeKey],
+      cardHighlights: reputationPlanContent.pro.cardHighlights[localeKey],
       features: [
         { label: isDE ? '5 Bewertungsplattformen' : '5 review platforms', included: true },
         { label: isDE ? '300 E-Mail-Anfragen/Monat' : '300 email requests/month', included: true },
@@ -137,7 +71,8 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       name: 'Premium',
       price: 169.90,
       yearlyPrice: 152,
-      description: PREMIUM_DESC,
+      description: reputationPlanContent.premium.fullDescription[localeKey],
+      cardHighlights: reputationPlanContent.premium.cardHighlights[localeKey],
       features: [
         { label: isDE ? '15+ Bewertungsplattformen' : '15+ review platforms', included: true },
         { label: isDE ? '500 E-Mail-Anfragen/Monat' : '500 email requests/month', included: true },

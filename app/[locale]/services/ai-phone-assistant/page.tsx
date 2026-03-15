@@ -6,75 +6,15 @@ import ProcessRoadmap from '@/components/sections/ProcessRoadmap';
 import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
+import { aiPlanContent } from '../../../../lib/ai-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return { title: locale === 'de' ? 'KI-Telefonassistent' : 'AI Phone Assistant' };
 }
 
-const ASSIST_DESC = `Paket „AI Voice Assist" — Leistungsbeschreibung
-
-Das Paket „AI Voice Assist" umfasst die Bereitstellung eines KI-gestützten Telefonassistenten zur automatisierten Annahme und Bearbeitung eingehender Telefonanrufe.
-
-Der KI-Telefonassistent kann eingesetzt werden für:
-• Entgegennahme eingehender Telefonanrufe
-• Abfrage von Anliegen des Anrufers
-• Bereitstellung grundlegender Informationen (Öffnungszeiten, allgemeine Hinweise)
-• Aufnahme von Kontaktinformationen
-• Weiterleitung von Anrufen an Mitarbeiter
-• Aufnahme von Terminwünschen oder Kundenanfragen
-
-Nutzung und Minutenkontingent:
-In diesem Paket sind monatlich 2.000 Gesprächsminuten enthalten.
-Bei Überschreitung: 0,16 € pro Minute.
-Nicht verbrauchte Minuten verfallen am Ende des Abrechnungszeitraums.
-
-Preise und Vertragsbedingungen:
-Preis: 399,00 € pro Monat
-Mindestvertragslaufzeit: 24 Monate
-Kündigungsfrist: 3 Monate zum Ende der Vertragslaufzeit`;
-
-const PROF_DESC = `Paket „AI Voice Professional" — Leistungsbeschreibung
-
-Das Paket „AI Voice Professional" richtet sich an Unternehmen mit höherem Anrufaufkommen, bei denen eingehende Telefonanfragen automatisiert strukturiert erfasst und verarbeitet werden sollen.
-
-Der Assistent kann unter anderem:
-• Anrufer begrüßen und nach ihrem Anliegen fragen
-• Informationen zum Unternehmen bereitstellen
-• Terminwünsche erfassen oder Terminänderungen aufnehmen
-• Kontaktinformationen des Anrufers erfassen
-• Anrufe bei Bedarf an zuständige Mitarbeiter weiterleiten
-• Gesprächsinformationen strukturiert erfassen
-
-Nutzung und Minutenkontingent:
-In diesem Paket sind monatlich 3.500 Gesprächsminuten enthalten.
-Bei Überschreitung: 0,14 € pro Minute.
-
-Preise und Vertragsbedingungen:
-Preis: 499,00 € pro Monat
-Mindestvertragslaufzeit: 24 Monate`;
-
-const ENT_DESC = `Paket „AI Voice Enterprise" — Leistungsbeschreibung
-
-Das Paket „AI Voice Enterprise" richtet sich an Unternehmen mit höherem Anrufvolumen, bei denen eingehende Telefonanrufe automatisiert verarbeitet und strukturiert bearbeitet werden sollen.
-
-Der Assistent kann unter anderem:
-• Eingehende Anrufe automatisch entgegennehmen
-• Anliegen von Anrufern erfassen
-• Häufige Fragen auf Grundlage hinterlegter Informationen beantworten
-• Terminwünsche aufnehmen
-• Anrufe bei Bedarf an zuständige Mitarbeiter weiterleiten
-• Gesprächsinformationen dokumentieren
-
-Nutzung und Minutenkontingent:
-In diesem Paket sind monatlich 5.500 Gesprächsminuten enthalten.
-Bei Überschreitung: 0,13 € pro Minute.
-
-Preise und Vertragsbedingungen:
-Preis: 699,00 € pro Monat
-Mindestvertragslaufzeit: 24 Monate`;
-
 export default function AIPhonePage({ params: { locale } }: { params: { locale: string } }) {
   const isDE = locale === 'de';
+  const localeKey: 'de' | 'en' = isDE ? 'de' : 'en';
 
   const capabilities = isDE ? [
     { icon: '📞', label: 'Anrufe 24/7 annehmen' },
@@ -108,9 +48,11 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
     {
       name: 'AI Voice Assist',
       price: 399,
+      yearlyPrice: 359.1,
       minutes: 2000,
       extraMin: '€0.16',
-      description: ASSIST_DESC,
+      description: aiPlanContent.assist.fullDescription[localeKey],
+      cardHighlights: aiPlanContent.assist.cardHighlights[localeKey],
       features: [
         { label: isDE ? '2.000 Gesprächsminuten/Monat' : '2,000 conversation minutes/month', included: true },
         { label: isDE ? 'Anrufannahme & Bearbeitung' : 'Call answering & handling', included: true },
@@ -125,10 +67,12 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
     {
       name: 'AI Voice Professional',
       price: 499,
+      yearlyPrice: 449.1,
       minutes: 3500,
       extraMin: '€0.14',
       badge: isDE ? 'Beliebteste Wahl' : 'Most Popular',
-      description: PROF_DESC,
+      description: aiPlanContent.professional.fullDescription[localeKey],
+      cardHighlights: aiPlanContent.professional.cardHighlights[localeKey],
       features: [
         { label: isDE ? '3.500 Gesprächsminuten/Monat' : '3,500 conversation minutes/month', included: true },
         { label: isDE ? 'Vollständiges Anrufmanagement' : 'Full inbound call management', included: true },
@@ -143,9 +87,11 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
     {
       name: 'AI Voice Enterprise',
       price: 699,
+      yearlyPrice: 629.1,
       minutes: 5500,
       extraMin: '€0.13',
-      description: ENT_DESC,
+      description: aiPlanContent.enterprise.fullDescription[localeKey],
+      cardHighlights: aiPlanContent.enterprise.cardHighlights[localeKey],
       features: [
         { label: isDE ? '5.500 Gesprächsminuten/Monat' : '5,500 conversation minutes/month', included: true },
         { label: isDE ? 'Hochvolumen-Anrufautomatisierung' : 'High-volume call automation', included: true },
@@ -171,7 +117,7 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
     { feature: isDE ? 'Individuelle Konfiguration' : 'Custom configuration', values: [false, false, true] },
     { feature: isDE ? 'Jahreskonfiguration' : 'Annual configuration update', values: ['1x', '1x', '1x'] },
     { feature: isDE ? 'Support' : 'Support', values: [isDE ? 'Standard' : 'Standard', isDE ? 'Standard' : 'Standard', isDE ? 'Priorität' : 'Priority'] },
-    { feature: isDE ? 'Mindestlaufzeit' : 'Minimum term', values: ['24 Monate', '24 Monate', '24 Monate'] },
+    { feature: isDE ? 'Mindestlaufzeit' : 'Minimum term', values: [isDE ? '24 Monate' : '24 months', isDE ? '24 Monate' : '24 months', isDE ? '24 Monate' : '24 months'] },
   ];
 
   const faqs = isDE ? [

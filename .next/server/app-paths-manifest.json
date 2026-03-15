@@ -1,8 +1,7 @@
 {
-  "/[locale]/privacy/page": "app/[locale]/privacy/page.js",
-  "/[locale]/avv/page": "app/[locale]/avv/page.js",
   "/[locale]/services/reputation-management/page": "app/[locale]/services/reputation-management/page.js",
-  "/[locale]/about/page": "app/[locale]/about/page.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/services/websites/page": "app/[locale]/services/websites/page.js"
+  "/[locale]/about/page": "app/[locale]/about/page.js",
+  "/[locale]/services/websites/page": "app/[locale]/services/websites/page.js",
+  "/[locale]/services/ai-phone-assistant/page": "app/[locale]/services/ai-phone-assistant/page.js"
 }
