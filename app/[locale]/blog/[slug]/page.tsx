@@ -36,7 +36,7 @@ For most small and medium businesses, managing reviews manually is simply not fe
 
 ## The Solution: Automated Reputation Management
 
-This is precisely where reputation management platforms like E-Viral come in. By automating the collection, monitoring, and response process, businesses can:
+This is precisely where reputation management platforms like EViral come in. By automating the collection, monitoring, and response process, businesses can:
 
 1. **Never miss a review** — alerts and automated monitoring across all platforms
 2. **Respond consistently and professionally** — AI-generated response suggestions tailored to each review
@@ -94,7 +94,7 @@ For businesses that have implemented AI phone systems, the return on investment 
 
 ## Getting Started
 
-The implementation process is simpler than most business owners expect. With E-Viral's AI Voice service, setup involves connecting your existing phone number via call forwarding, configuring the AI with your business information, and going live — often within 48 hours.
+The implementation process is simpler than most business owners expect. With EViral's AI Voice service, setup involves connecting your existing phone number via call forwarding, configuring the AI with your business information, and going live — often within 48 hours.
 
 [Book a demo](/en/contact) to see the system in action.`,
   },
@@ -145,7 +145,7 @@ Not all websites are created equal. A professional business website should be:
 - **Legally compliant** — especially important in Germany (Impressum, Datenschutz)
 - **Regularly maintained** — outdated content damages credibility
 
-E-Viral offers complete website packages starting from €109.90/month including hosting, maintenance, and annual content updates. [View our website packages](/en/services/websites).`,
+EViral offers complete website packages starting from €109.90/month including hosting, maintenance, and annual content updates. [View our website packages](/en/services/websites).`,
   },
   'warum-online-bewertungen-entscheidend': {
     title: 'Warum Online-Bewertungen über Ihren Unternehmenserfolg entscheiden',
@@ -169,7 +169,7 @@ Die meisten Unternehmen konzentrieren sich darauf, Bewertungen zu sammeln. Der e
 
 ## Die Lösung: Automatisiertes Reputationsmanagement
 
-Genau hier kommt E-Viral ins Spiel. Durch die Automatisierung des Sammlungs-, Überwachungs- und Antwortprozesses können Unternehmen:
+Genau hier kommt EViral ins Spiel. Durch die Automatisierung des Sammlungs-, Überwachungs- und Antwortprozesses können Unternehmen:
 
 1. **Keine Bewertung mehr verpassen** – automatische Überwachung aller Plattformen
 2. **Professionell und konsistent antworten** – KI-generierte Antwortvorschläge
@@ -232,7 +232,7 @@ Vertrauen ist das Fundament jeder Geschäftsbeziehung. Eine professionelle Websi
 
 Ihre Website ist der Knotenpunkt, um den herum alle anderen Marketingaktivitäten kreisen. Egal ob Social Media, E-Mail-Marketing oder Mundpropaganda – alle Wege sollten zu Ihrer professionellen Website führen.
 
-E-Viral bietet komplette Website-Pakete ab **109,90 €/Monat** inklusive Hosting, Wartung und jährlicher Inhaltsaktualisierung. [Jetzt Pakete ansehen](/de/services/websites).`,
+EViral bietet komplette Website-Pakete ab **109,90 €/Monat** inklusive Hosting, Wartung und jährlicher Inhaltsaktualisierung. [Jetzt Pakete ansehen](/de/services/websites).`,
   },
 };
 

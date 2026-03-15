@@ -3,10 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Star, Globe, Phone, Check, TrendingUp, Shield, Zap, Users, ArrowUpRight } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
+import VideoSection from '@/components/sections/VideoSection';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return {
-    title: locale === 'de' ? 'E-Viral — Digitale Wachstumslösungen' : 'E-Viral — Digital Growth Solutions',
+    title: locale === 'de' ? 'EViral — Digitale Wachstumslösungen' : 'EViral — Digital Growth Solutions',
     description: locale === 'de'
       ? 'Reputationsmanagement, professionelle Websites und KI-Telefonassistenten für Ihr Unternehmen.'
       : 'Reputation management, professional websites and AI phone assistants for your business.',
@@ -143,10 +144,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               </p>
 
               <div className="hero-cta flex flex-wrap gap-4 mb-12">
-                <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
-                  className="btn-primary text-base px-8 py-4">
+                <Link href={`/${locale}/booking`} className="btn-primary text-base px-8 py-4">
                   {isDE ? 'Kostenlose Beratung' : 'Free Consultation'} <ArrowRight size={18} />
-                </a>
+                </Link>
                 <Link href={`/${locale}/services/reputation-management`} className="btn-secondary text-base px-8 py-4">
                   {isDE ? 'Leistungen entdecken' : 'Explore Services'}
                 </Link>
@@ -252,6 +252,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
+
+      {/* ── VIDEO SECTION ─────────────────────────── */}
+      <VideoSection locale={locale} />
 
       {/* ── MARQUEE PLATFORMS ────────────────────── */}
       <section className="py-5 border-t border-b border-[var(--border)] bg-[var(--surface)] overflow-hidden">
@@ -485,9 +488,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <Link href={`/${locale}/services/reputation-management`} className="btn-primary">
                 {isDE ? 'Mehr erfahren' : 'Learn more'} <ArrowUpRight size={16} />
               </Link>
-              <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+              <Link href={`/${locale}/booking`} className="btn-secondary">
                 {isDE ? 'Demo buchen' : 'Book demo'}
-              </a>
+              </Link>
             </div>
           </AnimatedSection>
 
@@ -539,10 +542,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 : 'Book a free 30-minute consultation and discover how we take your business to the next level.'}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+              <Link href={`/${locale}/booking`}
                 className="inline-flex items-center gap-2 px-9 py-4.5 bg-white text-[var(--black)] font-bold rounded-xl text-base hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300" style={{ paddingTop: '1.1rem', paddingBottom: '1.1rem' }}>
                 {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={20} />
-              </a>
+              </Link>
               <Link href={`/${locale}/partner`}
                 className="inline-flex items-center gap-2 px-9 py-4.5 text-white border border-white/20 font-semibold rounded-xl text-base hover:bg-white/10 transition-all duration-300" style={{ paddingTop: '1.1rem', paddingBottom: '1.1rem' }}>
                 {isDE ? 'Partner werden' : 'Become a Partner'}

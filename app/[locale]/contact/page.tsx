@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Mail, ArrowRight, Loader2, Check } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
@@ -42,9 +43,9 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
                 </div>
               </div>
               <div className="mt-10">
-                <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                <Link href={`/${locale}/booking`} className="btn-primary">
                   {isDE ? 'Direkt Termin buchen' : 'Book directly'} <ArrowRight size={16} />
-                </a>
+                </Link>
               </div>
             </AnimatedSection>
 

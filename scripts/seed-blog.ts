@@ -61,7 +61,7 @@ const posts = [
     title: 'Building a Complete Digital Presence for Local Businesses',
     excerpt: 'A complete digital presence is more than a website. Here\'s what every local business needs in 2025.',
     category: 'marketing',
-    content: `## The Three Pillars of Digital Presence\n\n1. **A professional website** — your digital headquarters\n2. **Strong online reviews** — your social proof and trust signals\n3. **Responsive communication** — answering calls, emails, and messages promptly\n\n## Why Most Businesses Fall Short\n\nBuilding and maintaining all three pillars manually is time-consuming and inconsistent. The businesses that win in local markets are those that have systematised all three.\n\n## The Integrated Approach\n\nE-Viral offers all three pillars in one place: professional websites, reputation management, and AI phone assistance.`,
+    content: `## The Three Pillars of Digital Presence\n\n1. **A professional website** — your digital headquarters\n2. **Strong online reviews** — your social proof and trust signals\n3. **Responsive communication** — answering calls, emails, and messages promptly\n\n## Why Most Businesses Fall Short\n\nBuilding and maintaining all three pillars manually is time-consuming and inconsistent. The businesses that win in local markets are those that have systematised all three.\n\n## The Integrated Approach\n\nEViral offers all three pillars in one place: professional websites, reputation management, and AI phone assistance.`,
     published: true,
   },
   // German posts
@@ -116,7 +116,7 @@ const posts = [
     title: 'Vollständige digitale Präsenz für lokale Unternehmen aufbauen',
     excerpt: 'Eine vollständige digitale Präsenz ist mehr als nur eine Website.',
     category: 'marketing',
-    content: `## Die drei Säulen der digitalen Präsenz\n\n1. **Eine professionelle Website** — Ihr digitales Hauptquartier\n2. **Starke Online-Bewertungen** — Ihr sozialer Beweis und Vertrauenssignal\n3. **Reaktionsschnelle Kommunikation** — Anrufe, E-Mails und Nachrichten zeitnah beantworten\n\n## Warum die meisten Unternehmen scheitern\n\nAlle drei Säulen manuell aufzubauen und zu pflegen ist zeitaufwendig und inkonsistent.\n\n## Der integrierte Ansatz\n\nE-Viral bietet alle drei Säulen an einem Ort: professionelle Websites, Reputationsmanagement und KI-Telefon-Assistenz.`,
+    content: `## Die drei Säulen der digitalen Präsenz\n\n1. **Eine professionelle Website** — Ihr digitales Hauptquartier\n2. **Starke Online-Bewertungen** — Ihr sozialer Beweis und Vertrauenssignal\n3. **Reaktionsschnelle Kommunikation** — Anrufe, E-Mails und Nachrichten zeitnah beantworten\n\n## Warum die meisten Unternehmen scheitern\n\nAlle drei Säulen manuell aufzubauen und zu pflegen ist zeitaufwendig und inkonsistent.\n\n## Der integrierte Ansatz\n\nEViral bietet alle drei Säulen an einem Ort: professionelle Websites, Reputationsmanagement und KI-Telefon-Assistenz.`,
     published: true,
   },
 ];

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Menu, X, ChevronDown, Star, Globe, Phone, ArrowRight } from 'lucide-react';
@@ -11,12 +11,40 @@ export default function Navbar({ locale }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const closeServicesTimeoutRef = useRef<number | null>(null);
   const otherLocale = locale === 'de' ? 'en' : 'de';
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
+  }, []);
+
+  const openServicesMenu = () => {
+    if (closeServicesTimeoutRef.current !== null) {
+      window.clearTimeout(closeServicesTimeoutRef.current);
+      closeServicesTimeoutRef.current = null;
+    }
+    setServicesOpen(true);
+  };
+
+  const closeServicesMenu = () => {
+    if (closeServicesTimeoutRef.current !== null) {
+      window.clearTimeout(closeServicesTimeoutRef.current);
+    }
+
+    closeServicesTimeoutRef.current = window.setTimeout(() => {
+      setServicesOpen(false);
+      closeServicesTimeoutRef.current = null;
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeServicesTimeoutRef.current !== null) {
+        window.clearTimeout(closeServicesTimeoutRef.current);
+      }
+    };
   }, []);
 
   const services = [
@@ -40,24 +68,34 @@ export default function Navbar({ locale }: NavbarProps) {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 bg-[#080808] rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:rotate-6">
-              <span className="text-white text-xs font-black">e</span>
+              <span className="text-white text-xs font-black">e.</span>
             </div>
             <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-lg font-bold tracking-tight text-[#080808]">
-              e<span className="text-[#e8642a]">-</span>viral
+              EViral<span className="text-[#e8642a]">.</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-0.5">
-            <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button className="relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[#555] hover:text-[#080808] rounded-lg hover:bg-[#f4f3f1] transition-all duration-200 group">
+            <div className="relative" onMouseEnter={openServicesMenu} onMouseLeave={closeServicesMenu}>
+              <button
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={servicesOpen}
+                onClick={() => setServicesOpen((prev) => !prev)}
+                className="relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[#555] hover:text-[#080808] rounded-lg hover:bg-[#f4f3f1] transition-all duration-200 group"
+              >
                 {t('services')}
                 <ChevronDown size={13} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-1 left-4 right-4 h-[1.5px] bg-[#080808] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
 
               {/* Dropdown */}
-              <div className={`absolute top-full left-0 mt-2 w-80 bg-white border border-[#e2e0dc] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-2.5 transition-all duration-300 ${servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+              <div
+                onMouseEnter={openServicesMenu}
+                onMouseLeave={closeServicesMenu}
+                className={`absolute top-full left-0 mt-2 w-80 bg-white border border-[#e2e0dc] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-2.5 transition-all duration-300 ${servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}
+              >
                 <div className="absolute -top-1.5 left-6 w-3 h-3 bg-white border-l border-t border-[#e2e0dc] rotate-45" />
                 {services.map((s, i) => (
                   <Link key={s.href} href={s.href} className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-[#f4f3f1] transition-all duration-200 group/item">
@@ -93,9 +131,9 @@ export default function Navbar({ locale }: NavbarProps) {
                className="px-4 py-2 text-sm font-medium text-[#555] hover:text-[#080808] rounded-lg hover:bg-[#f4f3f1] transition-all duration-200">
               {t('login')}
             </a>
-            <a href="https://www.e-viral.de/booking-calendar/kostenlose-beratung" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-5 py-2.5">
+            <Link href={`/${locale}/booking`} className="btn-primary text-sm px-5 py-2.5">
               {t('cta')}
-            </a>
+            </Link>
           </div>
 
           <button className="md:hidden p-2 rounded-xl hover:bg-[#f4f3f1] transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -128,10 +166,10 @@ export default function Navbar({ locale }: NavbarProps) {
             <Link href={`/${otherLocale}`} className="flex-1 text-center py-2.5 text-sm font-semibold border border-[#e2e0dc] rounded-xl hover:bg-[#f4f3f1] uppercase tracking-wider">
               {otherLocale}
             </Link>
-            <a href="https://www.e-viral.de/booking-calendar/kostenlose-beratung" target="_blank" rel="noopener noreferrer"
+            <Link href={`/${locale}/booking`}
                className="flex-1 text-center py-2.5 text-sm font-semibold bg-[#080808] text-white rounded-xl hover:bg-[#222] transition-all">
               {t('cta')}
-            </a>
+            </Link>
           </div>
         </div>
       )}

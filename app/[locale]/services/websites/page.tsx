@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ArrowRight, Globe } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import ProcessRoadmap from '@/components/sections/ProcessRoadmap';
@@ -6,77 +7,16 @@ import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import DomainChecker from '@/components/sections/DomainChecker';
+import { websiteDemoCompanies } from '@/lib/website-demo-data';
+import { websitePlanContent } from '../../../../lib/website-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return { title: locale === 'de' ? 'Websites' : 'Professional Websites' };
 }
 
-const PRO_DESC = `Paket „Pro Website" — Leistungsbeschreibung
-
-Das Paket „Pro Website" umfasst die Erstellung und Bereitstellung einer professionellen Unternehmenswebsite, die Unternehmen dabei unterstützt, online präsent zu sein und potenziellen Kunden einen modernen und vertrauenswürdigen Eindruck zu vermitteln.
-
-Der Leistungsumfang umfasst unter anderem:
-• Erstellung einer professionellen Unternehmenswebsite mit moderner Struktur
-• Gestaltung und Aufbau der Website auf Basis eines zeitgemäßen Webdesign-Systems
-• Bereitstellung und Einrichtung von Hosting und technischer Infrastruktur
-• Verknüpfung der Website mit der Domain des Kunden
-• Integration eines Kontaktformulars
-• Grundlegende Suchmaschinen-Grundeinstellungen
-• Integration rechtlich erforderlicher Inhalte wie Impressum
-• Jährliche Inhaltsaktualisierung (1x pro Jahr)
-• Technische Betreuung und Sicherheitsupdates
-
-Preise und Vertragsbedingungen
-Preis: 109,90 € pro Monat
-Einmalige Bereitstellungsgebühr: 299,00 € einmalig
-Mindestvertragslaufzeit: 24 Monate
-Kündigungsfrist: 3 Monate zum Ende der Vertragslaufzeit`;
-
-const PREMIUM_DESC = `Paket „Premium Website" — Leistungsbeschreibung
-
-Das Paket „Premium Website" richtet sich an Unternehmen, die einen umfangreicheren Internetauftritt mit mehreren Inhaltsseiten und erweiterten Darstellungsmöglichkeiten benötigen.
-
-Der Leistungsumfang umfasst insbesondere:
-• Erstellung einer mehrseitigen Unternehmenswebsite mit bis zu 4 Inhaltsseiten
-• Individuelle Gestaltung im Rahmen eines professionellen Designsystems
-• Bereitstellung und Einrichtung der technischen Infrastruktur inkl. Hosting
-• Verknüpfung der Website mit der Domain des Kunden
-• Integration von Kontakt- oder Anfrageformularen
-• Einbindung externer Dienste (Karten, Bewertungen, Social Media)
-• Erweiterte Suchmaschinen-Grundeinstellungen
-• Jährliche Inhaltsaktualisierung (1x pro Jahr)
-• Wartung und Sicherheitsupdates
-
-Preise und Vertragsbedingungen
-Preis: 149,90 € pro Monat
-Einmalige Bereitstellungsgebühr: 299,00 € einmalig
-Mindestvertragslaufzeit: 24 Monate
-Kündigungsfrist: 3 Monate zum Ende der Vertragslaufzeit`;
-
-const ENTERPRISE_DESC = `Paket „Enterprise Website" — Leistungsbeschreibung
-
-Das Paket „Enterprise Website" richtet sich an Unternehmen mit erweiterten Anforderungen an ihren digitalen Auftritt sowie an Betriebe, die ihre Website als umfangreiche Unternehmenspräsentation nutzen möchten.
-
-Der Leistungsumfang umfasst unter anderem:
-• Erstellung einer umfangreichen Unternehmenswebsite mit bis zu 7 Inhaltsseiten
-• Gestaltung entsprechend moderner Design- und Benutzerführungsstandards
-• Bereitstellung und Einrichtung von Hosting und technischer Infrastruktur
-• Verknüpfung der Website mit der Domain des Kunden
-• Integration verschiedener Kontakt- und Anfragefunktionen
-• Verknüpfung mit externen Plattformen (Karten, Bewertungen, Analytics, Social Media)
-• Erweiterte technische SEO-Einstellungen
-• Zukunftssichere Struktur für Erweiterungen
-• Jährliche Inhaltsaktualisierung (1x pro Jahr)
-• Vollständige technische Betreuung
-
-Preise und Vertragsbedingungen
-Preis: 199,90 € pro Monat
-Einmalige Bereitstellungsgebühr: 299,00 € einmalig
-Mindestvertragslaufzeit: 24 Monate
-Kündigungsfrist: 3 Monate zum Ende der Vertragslaufzeit`;
-
 export default function WebsitesPage({ params: { locale } }: { params: { locale: string } }) {
   const isDE = locale === 'de';
+  const localeKey: 'de' | 'en' = isDE ? 'de' : 'en';
 
   const steps = isDE ? [
     { icon: '💬', title: 'Erstgespräch', desc: 'Sie teilen Ihre Ziele und Unternehmensinfos' },
@@ -96,7 +36,8 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
       price: 109.90,
       yearlyPrice: 98,
       setupFee: 299,
-      description: PRO_DESC,
+      description: websitePlanContent.pro.fullDescription[localeKey],
+      cardHighlights: websitePlanContent.pro.cardHighlights[localeKey],
       features: [
         { label: isDE ? 'Professionelle Unternehmenswebsite' : 'Professional business website', included: true },
         { label: isDE ? 'Mobil & Desktop optimiert' : 'Mobile & desktop optimized', included: true },
@@ -115,7 +56,8 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
       yearlyPrice: 134,
       setupFee: 299,
       badge: isDE ? 'Beliebteste Wahl' : 'Most Popular',
-      description: PREMIUM_DESC,
+      description: websitePlanContent.premium.fullDescription[localeKey],
+      cardHighlights: websitePlanContent.premium.cardHighlights[localeKey],
       features: [
         { label: isDE ? 'Bis zu 4 Inhaltsseiten' : 'Up to 4 content pages', included: true },
         { label: isDE ? 'Individuelles Designsystem' : 'Individual design system', included: true },
@@ -133,7 +75,8 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
       price: 199.90,
       yearlyPrice: 179,
       setupFee: 299,
-      description: ENTERPRISE_DESC,
+      description: websitePlanContent.enterprise.fullDescription[localeKey],
+      cardHighlights: websitePlanContent.enterprise.cardHighlights[localeKey],
       features: [
         { label: isDE ? 'Bis zu 7 Inhaltsseiten' : 'Up to 7 content pages', included: true },
         { label: isDE ? 'Full Custom Design & UX' : 'Full custom design & UX', included: true },
@@ -147,6 +90,21 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
       ],
     },
   ];
+
+  const paymentLinks = {
+    'Pro Website': {
+      monthly: 'https://pay.e-viral.de/b/fZuaEP30d7mndyD5kp5sA0y',
+      yearly: 'https://pay.e-viral.de/b/dRm9AL1W95efcuz6ot5sA0z',
+    },
+    'Premium Website': {
+      monthly: 'https://pay.e-viral.de/b/00wcMX30d9uv66b1495sA0A',
+      yearly: 'https://pay.e-viral.de/b/eVq00b30dgWX9inbIN5sA0B',
+    },
+    'Enterprise Website': {
+      monthly: 'https://pay.e-viral.de/b/8x2bIT9oBayz7afcMR5sA0C',
+      yearly: 'https://pay.e-viral.de/b/8x2dR1cANcGHcuzfZ35sA0D',
+    },
+  };
 
   const tableRows = [
     { feature: isDE ? 'Inhaltsseiten' : 'Content pages', values: ['1', '4', '7'] },
@@ -179,14 +137,14 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
     { q: 'Can I add more pages later?', a: 'Yes, additional pages or features can be added as paid extensions. Please contact us to discuss.' },
   ];
 
-  const demoTemplates = [
-    { name: isDE ? 'Restaurant & Gastronomie' : 'Restaurant & Hospitality', emoji: '🍽️', desc: isDE ? 'Professionelle Website für Restaurants und Cafés' : 'Professional website for restaurants and cafes' },
-    { name: isDE ? 'Handwerk & Dienstleistung' : 'Trades & Services', emoji: '🔧', desc: isDE ? 'Für Handwerksbetriebe und Dienstleister' : 'For tradespeople and service businesses' },
-    { name: isDE ? 'Medizin & Gesundheit' : 'Medical & Health', emoji: '🏥', desc: isDE ? 'Für Arztpraxen und Gesundheitsdienstleister' : 'For medical practices and health services' },
-    { name: isDE ? 'Immobilien' : 'Real Estate', emoji: '🏠', desc: isDE ? 'Für Makler und Immobilienunternehmen' : 'For agents and real estate companies' },
-    { name: isDE ? 'Beauty & Wellness' : 'Beauty & Wellness', emoji: '💅', desc: isDE ? 'Für Salons, Spas und Wellnessangebote' : 'For salons, spas and wellness services' },
-    { name: isDE ? 'Unternehmensberatung' : 'Business Consulting', emoji: '📊', desc: isDE ? 'Für Berater und professionelle Dienstleister' : 'For consultants and professional service firms' },
-  ];
+  const demoTemplates = websiteDemoCompanies.map((demo) => ({
+    slug: demo.slug,
+    name: isDE ? demo.name.de : demo.name.en,
+    emoji: demo.emoji,
+    desc: isDE ? demo.cardDescription.de : demo.cardDescription.en,
+    accent: demo.theme.accent,
+    cardTint: demo.theme.cardTint,
+  }));
 
   return (
     <div className="pt-16">
@@ -204,10 +162,10 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
             <p className="text-xl text-gray-400 max-w-2xl mb-10">
               {isDE ? 'Wir gestalten, bauen und pflegen Ihre Website, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.' : 'We design, build, and maintain your website so you can focus on running your business.'}
             </p>
-            <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+            <Link href={`/${locale}/booking`}
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Beratung buchen' : 'Book Consultation'} <ArrowRight size={18} />
-            </a>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
@@ -258,18 +216,36 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {demoTemplates.map((t, i) => (
             <AnimatedSection key={i} delay={i * 80}>
-              <div className="card-sticker flex items-center gap-4 hover:scale-[1.02] transition-transform">
-                <div className="w-14 h-14 rounded-2xl bg-[#F5F5F5] flex items-center justify-center text-2xl flex-shrink-0">{t.emoji}</div>
+              <Link
+                href={`/${locale}/services/websites/demo/${t.slug}`}
+                className="card-sticker flex items-center gap-4 hover:scale-[1.02] transition-transform group"
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                  style={{ background: t.cardTint }}
+                >
+                  {t.emoji}
+                </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">{t.name}</h4>
                   <p className="text-xs text-gray-500">{t.desc}</p>
+                  <span
+                    className="inline-block mt-2 text-[10px] font-bold uppercase tracking-widest"
+                    style={{ color: t.accent }}
+                  >
+                    {isDE ? 'Demo ansehen' : 'View demo'}
+                  </span>
                 </div>
-              </div>
+              </Link>
             </AnimatedSection>
           ))}
         </div>
         <AnimatedSection delay={300}>
-          <p className="text-center text-sm text-gray-400 mt-8">{isDE ? '* Demo-Websites verfügbar im Beratungsgespräch' : '* Demo websites available during consultation call'}</p>
+          <p className="text-center text-sm text-gray-400 mt-8">
+            {isDE
+              ? '* Klicken Sie auf eine Karte, um die statische Demo-Landingpage zu sehen.'
+              : '* Click any card to open its static demo landing page.'}
+          </p>
         </AnimatedSection>
       </section>
 
@@ -278,7 +254,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="section-title text-center mb-10">{isDE ? 'Domain-Verfügbarkeit prüfen' : 'Check Domain Availability'}</h2>
-            <DomainChecker />
+            <DomainChecker bookingHref={`/${locale}/booking`} />
           </AnimatedSection>
         </div>
       </section>
@@ -291,7 +267,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
             <p className="section-subtitle mx-auto">{isDE ? '€299 einmalige Bereitstellungsgebühr · 24 Monate Mindestlaufzeit' : '€299 one-time setup fee · 24-month minimum term'}</p>
           </div>
         </AnimatedSection>
-        <PricingCards plans={plans} showSetupFee />
+        <PricingCards plans={plans} showSetupFee bookingHref={`/${locale}/booking`} paymentLinks={paymentLinks} />
       </section>
 
       {/* Comparison */}
@@ -317,10 +293,10 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
               {isDE ? 'Bereit für Ihre neue Website?' : 'Ready for your new website?'}
             </h2>
             <p className="text-gray-400 mb-8">{isDE ? 'Buchen Sie jetzt ein kostenloses Beratungsgespräch.' : 'Book a free consultation call today.'}</p>
-            <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+            <Link href={`/${locale}/booking`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Jetzt starten' : 'Get started'} <ArrowRight size={18} />
-            </a>
+            </Link>
           </AnimatedSection>
         </div>
       </section>

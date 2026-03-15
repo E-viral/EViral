@@ -11,7 +11,7 @@ export default function ImprintPage({ params: { locale } }: { params: { locale: 
           <div className="prose prose-sm max-w-none space-y-6 text-gray-700">
             <section>
               <h2 className="text-lg font-bold mb-3 text-black">{isDE ? 'Angaben gemäß § 5 TMG' : 'Information pursuant to § 5 TMG'}</h2>
-              <p>E-Viral<br />info@e-viral.de</p>
+              <p>EViral<br />info@e-viral.de</p>
             </section>
             <section>
               <h2 className="text-lg font-bold mb-3 text-black">{isDE ? 'Kontakt' : 'Contact'}</h2>

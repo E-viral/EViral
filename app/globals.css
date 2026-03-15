@@ -115,20 +115,15 @@ h1,h2,h3,h4 { font-family:'Bricolage Grotesque',sans-serif; letter-spacing:-0.04
 @layer components {
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3.5 font-semibold rounded-xl cursor-pointer select-none relative overflow-hidden;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl cursor-pointer select-none;
     background:var(--black); color:white; border:2px solid var(--black);
     font-family:'DM Sans',sans-serif; font-size:0.95rem; letter-spacing:-0.01em;
-    transition:all 0.28s cubic-bezier(0.22,1,0.36,1);
+    white-space:nowrap; text-decoration:none;
+    transition:background-color 0.28s cubic-bezier(0.22,1,0.36,1), color 0.28s cubic-bezier(0.22,1,0.36,1), border-color 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s cubic-bezier(0.22,1,0.36,1), transform 0.22s cubic-bezier(0.22,1,0.36,1);
   }
-  .btn-primary::before {
-    content:''; position:absolute; inset:0; background:white;
-    transform:scaleX(0); transform-origin:right;
-    transition:transform 0.32s cubic-bezier(0.22,1,0.36,1); z-index:0;
-  }
-  .btn-primary:hover::before { transform:scaleX(1); transform-origin:left; }
-  .btn-primary:hover { color:var(--black); box-shadow:0 12px 36px rgba(0,0,0,0.2); transform:translateY(-2px); }
-  .btn-primary > * { position:relative; z-index:1; }
-  .btn-primary:active { transform:scale(0.97) translateY(0); }
+  .btn-primary:hover { background:white; color:var(--black); border-color:var(--black); box-shadow:0 12px 36px rgba(0,0,0,0.2); transform:translateY(-2px); }
+  .btn-primary:active { transform:translateY(0); }
+  .btn-primary:focus-visible { outline:2px solid var(--black); outline-offset:2px; }
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-6 py-3.5 font-semibold rounded-xl cursor-pointer select-none;

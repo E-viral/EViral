@@ -7,7 +7,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: { default: 'E-Viral — Digital Growth Agency', template: '%s | E-Viral' },
+  title: { default: 'EViral — Digital Growth Agency', template: '%s | EViral' },
   description: 'Reputation management, professional websites and AI phone assistant for your business.',
 };
 

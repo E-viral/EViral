@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ArrowRight, Handshake, Check } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import ProcessRoadmap from '@/components/sections/ProcessRoadmap';
@@ -87,10 +88,10 @@ export default function PartnerPage({ params: { locale } }: { params: { locale: 
                 ? 'Unsere Entwickler haben die Plattform gebaut. Sie verkaufen sie unter Ihrer eigenen Marke an Ihre Kunden – wir kümmern uns um alles im Hintergrund.'
                 : 'Our developers built the platform. You sell it to your clients as your own solution — we handle everything behind the scenes.'}
             </p>
-            <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+            <Link href={`/${locale}/booking`}
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Partner-Gespräch buchen' : 'Book a Partner Call'} <ArrowRight size={18} />
-            </a>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
@@ -198,10 +199,10 @@ export default function PartnerPage({ params: { locale } }: { params: { locale: 
             <p className="text-gray-500 text-sm mb-10">
               info@e-viral.de
             </p>
-            <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+            <Link href={`/${locale}/booking`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Partner-Gespräch buchen' : 'Book a Partner Call'} <ArrowRight size={18} />
-            </a>
+            </Link>
           </AnimatedSection>
         </div>
       </section>

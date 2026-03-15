@@ -39,7 +39,7 @@ SMTP_PORT=587          # SMTP port
 SMTP_USER=             # SMTP username
 SMTP_PASS=             # SMTP password
 CONTACT_EMAIL=info@e-viral.de
-NEXT_PUBLIC_BOOKING_URL=https://www.e-viral.de/booking-calendar/kostenlose-beratung
+NEXT_PUBLIC_BOOKING_URL=https://calendly.com/e-viral-info/30min
 NEXT_PUBLIC_LOGIN_URL=https://app.e-viral.de/#/login
 NEXT_PUBLIC_BASE_URL=https://e-viral.de
 ```
@@ -49,6 +49,7 @@ NEXT_PUBLIC_BASE_URL=https://e-viral.de
 | Route | Description |
 |-------|-------------|
 | `/[locale]` | Homepage |
+| `/[locale]/booking` | Inline Calendly booking page |
 | `/[locale]/services/reputation-management` | Reputation Management |
 | `/[locale]/services/websites` | Website Packages + Domain Checker |
 | `/[locale]/services/ai-phone-assistant` | AI Phone Assistant |
@@ -60,6 +61,7 @@ NEXT_PUBLIC_BASE_URL=https://e-viral.de
 | `/[locale]/imprint` | Imprint / Impressum |
 | `/[locale]/privacy` | Privacy Policy |
 | `/[locale]/terms` | Terms & Conditions |
+| `/[locale]/avv` | Data Processing Agreement / AV-Vertrag |
 
 ## API Routes
 

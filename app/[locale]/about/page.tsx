@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ArrowRight, Shield, Zap, Users, Heart, Lightbulb, Globe } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 
@@ -42,7 +43,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <div className="badge mb-6">{isDE ? 'Über E-Viral' : 'About E-Viral'}</div>
+              <div className="badge mb-6">{isDE ? 'Über EViral' : 'About EViral'}</div>
               <h1 className="text-5xl font-black tracking-tighter mb-6">
                 {isDE ? 'Wir sind Ihr digitaler Wachstumspartner' : 'We Are Your Digital Growth Partner'}
               </h1>
@@ -172,9 +173,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <AnimatedSection>
           <h2 className="section-title mb-4">{isDE ? 'Gemeinsam wachsen' : "Let's Grow Together"}</h2>
           <p className="text-gray-500 mb-8">{isDE ? 'Buchen Sie ein kostenloses Beratungsgespräch und erfahren Sie, wie wir Ihr Unternehmen voranbringen können.' : 'Book a free consultation and discover how we can take your business to the next level.'}</p>
-          <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <Link href={`/${locale}/booking`} className="btn-primary">
             {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
-          </a>
+          </Link>
         </AnimatedSection>
       </section>
     </div>

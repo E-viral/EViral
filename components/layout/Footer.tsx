@@ -47,10 +47,10 @@ export default function Footer({ locale }: FooterProps) {
             </h3>
             <p className="text-gray-400 text-sm">{isDE ? 'Kostenloses Beratungsgespräch — ohne Verpflichtung.' : 'Free consultation call — no obligation.'}</p>
           </div>
-          <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+          <Link href={`/${locale}/booking`}
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[var(--black)] font-bold rounded-xl hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-250 whitespace-nowrap flex-shrink-0">
             {isDE ? 'Jetzt buchen' : 'Book now'} <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export default function Footer({ locale }: FooterProps) {
         {/* Brand */}
         <div className="col-span-2">
           <Link href={`/${locale}`} className="inline-block mb-5">
-            <span className="text-2xl font-black tracking-tighter text-white">e-viral</span>
+            <span className="text-2xl font-black tracking-tighter text-white">eviral</span>
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
             {isDE
@@ -106,7 +106,7 @@ export default function Footer({ locale }: FooterProps) {
       {/* Bottom bar */}
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">© {year} E-Viral. {isDE ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}</p>
+          <p className="text-xs text-gray-600">© {year} EViral. {isDE ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}</p>
           <div className="flex items-center gap-4">
             <Link href={`/de`} className="text-xs text-gray-600 hover:text-gray-300 uppercase tracking-wider transition-colors">DE</Link>
             <span className="text-gray-700">·</span>

@@ -1,10 +1,15 @@
 'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Search, CheckCircle, XCircle, Loader2, Globe } from 'lucide-react';
 
 const TLDS = ['.de', '.com', '.net', '.org', '.io', '.eu'];
 
-export default function DomainChecker() {
+interface DomainCheckerProps {
+  bookingHref?: string;
+}
+
+export default function DomainChecker({ bookingHref = '/booking' }: DomainCheckerProps) {
   const [query, setQuery] = useState('');
   const [selectedTld, setSelectedTld] = useState('.de');
   const [result, setResult] = useState<{ domain: string; available: boolean } | null>(null);
@@ -77,8 +82,7 @@ export default function DomainChecker() {
             </p>
           </div>
           {result.available && (
-            <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
-              className="btn-primary text-xs px-4 py-2.5">Register</a>
+            <Link href={bookingHref} className="btn-primary text-xs px-4 py-2.5">Register</Link>
           )}
         </div>
       )}

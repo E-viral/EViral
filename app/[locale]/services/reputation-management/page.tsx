@@ -152,6 +152,21 @@ export default function ReputationPage({ params: { locale } }: { params: { local
     },
   ];
 
+  const paymentLinks = {
+    Basic: {
+      monthly: 'https://pay.e-viral.de/b/28E7sD7gtbCD5276ot5sA0h',
+      yearly: 'https://pay.e-viral.de/b/00wbIT30dgWX7afeUZ5sA0k',
+    },
+    Pro: {
+      monthly: 'https://pay.e-viral.de/b/cNicMX30d367527fZ35sA0m',
+      yearly: 'https://pay.e-viral.de/b/5kQ8wH1W922366bcMR5sA0n',
+    },
+    Premium: {
+      monthly: 'https://pay.e-viral.de/b/aFa28j6cpeOP9inbIN5sA0q',
+      yearly: 'https://pay.e-viral.de/b/00wfZ99oB5efeCH5kp5sA0r',
+    },
+  };
+
   const tableRows = [
     { feature: isDE ? 'Bewertungsplattformen' : 'Review platforms', values: ['3', '5', '15+'] },
     { feature: isDE ? 'E-Mail-Anfragen/Monat' : 'Email requests/month', values: ['100', '300', '500'] },
@@ -200,10 +215,10 @@ export default function ReputationPage({ params: { locale } }: { params: { local
               {isDE ? 'Automatisch Bewertungen sammeln, verwalten und beantworten – auf Google, Yelp, TripAdvisor und 15+ Plattformen.' : 'Automatically collect, manage, and respond to reviews across Google, Yelp, TripAdvisor, and 15+ platforms.'}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer"
+              <Link href={`/${locale}/booking`}
                 className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
                 {isDE ? 'Demo buchen' : 'Book a Demo'} <ArrowRight size={18} />
-              </a>
+              </Link>
             </div>
           </AnimatedSection>
         </div>
@@ -258,7 +273,7 @@ export default function ReputationPage({ params: { locale } }: { params: { local
               <p className="section-subtitle mx-auto">{isDE ? 'Alle Pakete mit 24 Monaten Mindestlaufzeit.' : 'All plans include a 24-month minimum term.'}</p>
             </div>
           </AnimatedSection>
-          <PricingCards plans={plans} />
+          <PricingCards plans={plans} bookingHref={`/${locale}/booking`} paymentLinks={paymentLinks} />
         </div>
       </section>
 
@@ -282,9 +297,9 @@ export default function ReputationPage({ params: { locale } }: { params: { local
         <AnimatedSection>
           <h2 className="section-title mb-4">{isDE ? 'Jetzt loslegen' : 'Get started today'}</h2>
           <p className="text-gray-500 mb-8">{isDE ? 'Buchen Sie ein kostenloses Beratungsgespräch und erfahren Sie, wie wir Ihre Reputation stärken.' : 'Book a free consultation and discover how we can strengthen your online reputation.'}</p>
-          <a href={process.env.NEXT_PUBLIC_BOOKING_URL || '#'} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <Link href={`/${locale}/booking`} className="btn-primary">
             {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
-          </a>
+          </Link>
         </AnimatedSection>
       </section>
     </div>
