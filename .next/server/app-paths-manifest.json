@@ -1,7 +1,23 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/blog/route": "app/api/blog/route.js",
+  "/api/domain-check/route": "app/api/domain-check/route.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/[locale]/about/page": "app/[locale]/about/page.js",
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/services/websites/page": "app/[locale]/services/websites/page.js",
+  "/[locale]/booking/page": "app/[locale]/booking/page.js",
+  "/[locale]/avv/page": "app/[locale]/avv/page.js",
+  "/[locale]/blog/[slug]/page": "app/[locale]/blog/[slug]/page.js",
+  "/[locale]/blog/page": "app/[locale]/blog/page.js",
+  "/[locale]/contact/page": "app/[locale]/contact/page.js",
+  "/[locale]/imprint/page": "app/[locale]/imprint/page.js",
+  "/[locale]/login/page": "app/[locale]/login/page.js",
+  "/[locale]/partner/page": "app/[locale]/partner/page.js",
   "/[locale]/services/ai-phone-assistant/page": "app/[locale]/services/ai-phone-assistant/page.js",
-  "/[locale]/imprint/page": "app/[locale]/imprint/page.js"
+  "/[locale]/privacy/page": "app/[locale]/privacy/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/services/reputation-management/page": "app/[locale]/services/reputation-management/page.js",
+  "/[locale]/services/websites/demo/[slug]/page": "app/[locale]/services/websites/demo/[slug]/page.js",
+  "/[locale]/terms/page": "app/[locale]/terms/page.js",
+  "/[locale]/services/websites/page": "app/[locale]/services/websites/page.js"
 }

@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import { legalDocuments, resolveLegalLocale, type LegalDocumentKey } from '@/lib/legal-content';
+import { Link, type AppHref } from '@/lib/navigation';
 
 interface LegalDocumentProps {
   documentKey: LegalDocumentKey;
@@ -33,7 +33,7 @@ export default function LegalDocument({ documentKey, locale }: LegalDocumentProp
 
                 if (href.startsWith('/')) {
                   return (
-                    <Link href={`/${locale}${href}`} className={className}>
+                    <Link href={href as AppHref} className={className}>
                       {children}
                     </Link>
                   );

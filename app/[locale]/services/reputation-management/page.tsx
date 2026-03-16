@@ -6,7 +6,8 @@ import PlatformIntegrations from '@/components/sections/PlatformIntegrations';
 import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
-import Link from 'next/link';
+import VideoSection from '@/components/sections/VideoSection';
+import { Link } from '@/lib/navigation';
 import { reputationPlanContent } from '../../../../lib/reputation-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -31,9 +32,9 @@ export default function ReputationPage({ params: { locale } }: { params: { local
 
   const plans = [
     {
-      name: 'Basic',
-      price: 49.90,
-      yearlyPrice: 44,
+      name: 'EViRAL Basic Bewertung',
+      price: 84.90,
+      yearlyPrice: 84.90,
       description: reputationPlanContent.basic.fullDescription[localeKey],
       cardHighlights: reputationPlanContent.basic.cardHighlights[localeKey],
       features: [
@@ -49,9 +50,9 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       ],
     },
     {
-      name: 'Pro',
+      name: 'EViRAL PRO - KI-SYSTEM',
       price: 99.90,
-      yearlyPrice: 89,
+      yearlyPrice: 99.90,
       badge: isDE ? 'Beliebteste Wahl' : 'Most Popular',
       description: reputationPlanContent.pro.fullDescription[localeKey],
       cardHighlights: reputationPlanContent.pro.cardHighlights[localeKey],
@@ -68,9 +69,9 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       ],
     },
     {
-      name: 'Premium',
-      price: 169.90,
-      yearlyPrice: 152,
+      name: 'EViRAL PREMIUM-SYSTEM',
+      price: 119.90,
+      yearlyPrice: 119.90,
       description: reputationPlanContent.premium.fullDescription[localeKey],
       cardHighlights: reputationPlanContent.premium.cardHighlights[localeKey],
       features: [
@@ -88,15 +89,15 @@ export default function ReputationPage({ params: { locale } }: { params: { local
   ];
 
   const paymentLinks = {
-    Basic: {
+    'EViRAL Basic Bewertung': {
       monthly: 'https://pay.e-viral.de/b/28E7sD7gtbCD5276ot5sA0h',
       yearly: 'https://pay.e-viral.de/b/00wbIT30dgWX7afeUZ5sA0k',
     },
-    Pro: {
+    'EViRAL PRO - KI-SYSTEM': {
       monthly: 'https://pay.e-viral.de/b/cNicMX30d367527fZ35sA0m',
       yearly: 'https://pay.e-viral.de/b/5kQ8wH1W922366bcMR5sA0n',
     },
-    Premium: {
+    'EViRAL PREMIUM-SYSTEM': {
       monthly: 'https://pay.e-viral.de/b/aFa28j6cpeOP9inbIN5sA0q',
       yearly: 'https://pay.e-viral.de/b/00wfZ99oB5efeCH5kp5sA0r',
     },
@@ -150,7 +151,7 @@ export default function ReputationPage({ params: { locale } }: { params: { local
               {isDE ? 'Automatisch Bewertungen sammeln, verwalten und beantworten – auf Google, Yelp, TripAdvisor und 15+ Plattformen.' : 'Automatically collect, manage, and respond to reviews across Google, Yelp, TripAdvisor, and 15+ platforms.'}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href={`/${locale}/booking`}
+              <Link href="/booking"
                 className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
                 {isDE ? 'Demo buchen' : 'Book a Demo'} <ArrowRight size={18} />
               </Link>
@@ -194,6 +195,18 @@ export default function ReputationPage({ params: { locale } }: { params: { local
         </div>
       </section>
 
+      {/* Reputation video */}
+      <VideoSection
+        locale={locale}
+        badgeText={isDE ? 'Reputationsmanagement Video' : 'Reputation Management Video'}
+        title={isDE ? 'So funktioniert Reputationsmanagement bei uns.' : 'How Reputation Management works with us.'}
+        subtitle={
+          isDE
+            ? 'In rund zwei Minuten sehen Sie, wie wir Bewertungen automatisiert sammeln, beantworten und messbar verbessern.'
+            : 'In around two minutes, see how we automate review collection, responses, and measurable reputation growth.'
+        }
+      />
+
       {/* Platform Integrations */}
       <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PlatformIntegrations title={isDE ? 'Integrierte Bewertungsplattformen' : 'Integrated Review Platforms'} />
@@ -208,7 +221,7 @@ export default function ReputationPage({ params: { locale } }: { params: { local
               <p className="section-subtitle mx-auto">{isDE ? 'Alle Pakete mit 24 Monaten Mindestlaufzeit.' : 'All plans include a 24-month minimum term.'}</p>
             </div>
           </AnimatedSection>
-          <PricingCards plans={plans} bookingHref={`/${locale}/booking`} paymentLinks={paymentLinks} />
+          <PricingCards plans={plans} bookingHref="/booking" paymentLinks={paymentLinks} />
         </div>
       </section>
 
@@ -232,7 +245,7 @@ export default function ReputationPage({ params: { locale } }: { params: { local
         <AnimatedSection>
           <h2 className="section-title mb-4">{isDE ? 'Jetzt loslegen' : 'Get started today'}</h2>
           <p className="text-gray-500 mb-8">{isDE ? 'Buchen Sie ein kostenloses Beratungsgespräch und erfahren Sie, wie wir Ihre Reputation stärken.' : 'Book a free consultation and discover how we can strengthen your online reputation.'}</p>
-          <Link href={`/${locale}/booking`} className="btn-primary">
+          <Link href="/booking" className="btn-primary">
             {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
           </Link>
         </AnimatedSection>

@@ -71,7 +71,7 @@ export default function Navbar({ locale }: NavbarProps) {
               <span className="text-white text-xs font-black">e.</span>
             </div>
             <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-lg font-bold tracking-tight text-[#080808]">
-              EViral<span className="text-[#e8642a]">.</span>
+              eviral<span className="text-[#e8642a]">.</span>
             </span>
           </Link>
 

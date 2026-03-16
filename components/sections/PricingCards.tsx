@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Check, X, Info, ArrowRight } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import ServiceDescriptionModal from './ServiceDescriptionModal';
+import { Link, type AppHref } from '@/lib/navigation';
 
 interface Feature { label: string; included: boolean; }
 type BillingMode = 'monthly' | 'yearly';
@@ -18,7 +18,7 @@ interface Plan {
 interface Props {
   plans: Plan[];
   showSetupFee?: boolean;
-  bookingHref?: string;
+  bookingHref?: AppHref;
   paymentLinks?: Record<string, PlanPaymentLinks>;
 }
 
@@ -28,6 +28,10 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
   const [ctaErrors, setCtaErrors] = useState<Record<string, string>>({});
 
   const usesDirectCheckout = paymentLinks !== undefined;
+  const hasYearlySavings = plans.some((plan) => {
+    const yearlyMonthlyPrice = plan.yearlyPrice ?? Number((plan.price * 0.9).toFixed(2));
+    return yearlyMonthlyPrice < plan.price;
+  });
 
   const getMissingLinkMessage = () => {
     if (typeof document !== 'undefined' && document.documentElement.lang === 'de') {
@@ -84,7 +88,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
               Yearly
             </button>
           </div>
-          {yearly && (
+          {yearly && hasYearlySavings && (
             <span className="badge-accent text-[10px] animate-[fadeIn_0.3s_ease_both]">Save ~10%</span>
           )}
         </div>

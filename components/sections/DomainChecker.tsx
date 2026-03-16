@@ -1,12 +1,12 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Search, CheckCircle, XCircle, Loader2, Globe } from 'lucide-react';
+import { Link, type AppHref } from '@/lib/navigation';
 
 const TLDS = ['.de', '.com', '.net', '.org', '.io', '.eu'];
 
 interface DomainCheckerProps {
-  bookingHref?: string;
+  bookingHref?: AppHref;
 }
 
 export default function DomainChecker({ bookingHref = '/booking' }: DomainCheckerProps) {

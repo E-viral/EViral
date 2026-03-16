@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Mail, ArrowRight, Loader2, Check } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
+import { Link } from '@/lib/navigation';
 
 export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
   const isDE = locale === 'de';
@@ -43,7 +43,7 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
                 </div>
               </div>
               <div className="mt-10">
-                <Link href={`/${locale}/booking`} className="btn-primary">
+                <Link href="/booking" className="btn-primary">
                   {isDE ? 'Direkt Termin buchen' : 'Book directly'} <ArrowRight size={16} />
                 </Link>
               </div>

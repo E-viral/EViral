@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/lib/navigation';
 export default function NotFound() {
   return (
     <div className="pt-32 text-center max-w-xl mx-auto px-4">

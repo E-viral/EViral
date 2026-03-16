@@ -1,3 +1,5 @@
+import type { AppLocale } from './routing';
+
 export interface LocalizedText {
   en: string;
   de: string;
@@ -12,7 +14,7 @@ export interface DemoTheme {
 }
 
 export interface WebsiteDemoCompany {
-  slug: string;
+  slug: LocalizedText;
   emoji: string;
   name: LocalizedText;
   cardDescription: LocalizedText;
@@ -24,7 +26,7 @@ export interface WebsiteDemoCompany {
 
 export const websiteDemoCompanies: WebsiteDemoCompany[] = [
   {
-    slug: 'restaurant-hospitality',
+    slug: { en: 'restaurant-hospitality', de: 'restaurant-gastronomie' },
     emoji: '🍽️',
     name: { en: 'Restaurant & Hospitality', de: 'Restaurant & Gastronomie' },
     cardDescription: {
@@ -62,7 +64,7 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
     },
   },
   {
-    slug: 'trades-services',
+    slug: { en: 'trades-services', de: 'handwerk-dienstleistung' },
     emoji: '🔧',
     name: { en: 'Trades & Services', de: 'Handwerk & Dienstleistung' },
     cardDescription: {
@@ -100,7 +102,7 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
     },
   },
   {
-    slug: 'medical-health',
+    slug: { en: 'medical-health', de: 'medizin-gesundheit' },
     emoji: '🏥',
     name: { en: 'Medical & Health', de: 'Medizin & Gesundheit' },
     cardDescription: {
@@ -138,7 +140,7 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
     },
   },
   {
-    slug: 'real-estate',
+    slug: { en: 'real-estate', de: 'immobilien' },
     emoji: '🏠',
     name: { en: 'Real Estate', de: 'Immobilien' },
     cardDescription: {
@@ -176,7 +178,7 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
     },
   },
   {
-    slug: 'beauty-wellness',
+    slug: { en: 'beauty-wellness', de: 'beauty-wellness' },
     emoji: '💅',
     name: { en: 'Beauty & Wellness', de: 'Beauty & Wellness' },
     cardDescription: {
@@ -214,7 +216,7 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
     },
   },
   {
-    slug: 'business-consulting',
+    slug: { en: 'business-consulting', de: 'unternehmensberatung' },
     emoji: '📊',
     name: { en: 'Business Consulting', de: 'Unternehmensberatung' },
     cardDescription: {
@@ -253,6 +255,10 @@ export const websiteDemoCompanies: WebsiteDemoCompany[] = [
   },
 ];
 
-export function getWebsiteDemoBySlug(slug: string): WebsiteDemoCompany | undefined {
-  return websiteDemoCompanies.find((company) => company.slug === slug);
+export function getWebsiteDemoBySlug(slug: string, locale: AppLocale): WebsiteDemoCompany | undefined {
+  return websiteDemoCompanies.find((company) => company.slug[locale] === slug);
+}
+
+export function getWebsiteDemoSlug(company: WebsiteDemoCompany, locale: AppLocale): string {
+  return company.slug[locale];
 }

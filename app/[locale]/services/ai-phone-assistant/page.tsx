@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, Phone } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import ProcessRoadmap from '@/components/sections/ProcessRoadmap';
 import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
+import { Link } from '@/lib/navigation';
 import { aiPlanContent } from '../../../../lib/ai-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -152,7 +152,7 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
             <p className="text-xl text-gray-400 max-w-2xl mb-10">
               {isDE ? 'Unser KI-Telefonassistent nimmt Kundenanrufe entgegen, erfasst Anfragen und bucht Termine – vollautomatisch.' : 'Our AI phone assistant answers customer calls, captures inquiries, and books appointments — automatically.'}
             </p>
-            <Link href={`/${locale}/booking`}
+            <Link href="/booking"
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Demo buchen' : 'Book a Demo'} <ArrowRight size={18} />
             </Link>
@@ -192,7 +192,7 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
             <p className="section-subtitle mx-auto">{isDE ? '24 Monate Mindestlaufzeit · Keine Einrichtungsgebühr' : '24-month minimum term · No setup fee'}</p>
           </div>
         </AnimatedSection>
-        <PricingCards plans={plans} bookingHref={`/${locale}/booking`} />
+        <PricingCards plans={plans} bookingHref="/booking" />
       </section>
 
       {/* Comparison Table */}
@@ -218,7 +218,7 @@ export default function AIPhonePage({ params: { locale } }: { params: { locale: 
               {isDE ? 'Bereit für Ihren KI-Telefonassistenten?' : 'Ready for your AI phone assistant?'}
             </h2>
             <p className="text-gray-400 mb-8">{isDE ? 'Buchen Sie eine Demo und erleben Sie es live.' : 'Book a demo and experience it live.'}</p>
-            <Link href={`/${locale}/booking`}
+            <Link href="/booking"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Demo buchen' : 'Book Demo'} <ArrowRight size={18} />
             </Link>

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, CheckCircle2, LayoutTemplate, MonitorSmartphone, Search, MessageSquareQuote } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
+import { Link } from '@/lib/navigation';
 import { getWebsiteDemoBySlug, type LocalizedText } from '@/lib/website-demo-data';
 
 interface DemoPageProps {
@@ -17,7 +17,8 @@ function t(locale: string, text: LocalizedText): string {
 }
 
 export async function generateMetadata({ params: { locale, slug } }: DemoPageProps): Promise<Metadata> {
-  const demo = getWebsiteDemoBySlug(slug);
+  const localeKey: 'de' | 'en' = locale === 'de' ? 'de' : 'en';
+  const demo = getWebsiteDemoBySlug(slug, localeKey);
 
   if (!demo) {
     return {
@@ -36,7 +37,8 @@ export async function generateMetadata({ params: { locale, slug } }: DemoPagePro
 }
 
 export default function WebsiteDemoPage({ params: { locale, slug } }: DemoPageProps) {
-  const demo = getWebsiteDemoBySlug(slug);
+  const localeKey: 'de' | 'en' = locale === 'de' ? 'de' : 'en';
+  const demo = getWebsiteDemoBySlug(slug, localeKey);
 
   if (!demo) {
     notFound();
@@ -144,14 +146,14 @@ export default function WebsiteDemoPage({ params: { locale, slug } }: DemoPagePr
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href={`/${locale}/booking`}
+                  href="/booking"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold"
                   style={{ background: '#ffffff', color: '#111111' }}
                 >
                   {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
                 </Link>
                 <Link
-                  href={`/${locale}/services/websites`}
+                  href="/services/websites"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold border"
                   style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.6)' }}
                 >
@@ -366,7 +368,7 @@ export default function WebsiteDemoPage({ params: { locale, slug } }: DemoPagePr
                 ? 'Buchen Sie ein kostenloses Gespraech. Wir passen dieses Konzept an Ihr Unternehmen an.'
                 : 'Book a free call and we will adapt this concept to your business.'}
             </p>
-            <Link href={`/${locale}/booking`} className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold" style={{ background: '#ffffff', color: '#111111' }}>
+            <Link href="/booking" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold" style={{ background: '#ffffff', color: '#111111' }}>
               {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
             </Link>
           </div>

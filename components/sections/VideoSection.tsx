@@ -1,12 +1,15 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import AnimatedSection from '@/components/common/AnimatedSection';
+import { Link } from '@/lib/navigation';
 
 interface VideoSectionProps {
   locale: string;
   src?: string;
   poster?: string;
+  badgeText?: string;
+  title?: string;
+  subtitle?: string;
 }
 
 const DEFAULT_VIDEO_SRC = '/videos/e-viral-explainer.mp4';
@@ -16,31 +19,36 @@ export default function VideoSection({
   locale,
   src,
   poster,
+  badgeText,
+  title,
+  subtitle,
 }: VideoSectionProps) {
   const isDE = locale === 'de';
   const [failedToLoad, setFailedToLoad] = useState(false);
   const videoSrc = src?.trim() || DEFAULT_VIDEO_SRC;
   const posterSrc = poster?.trim() || DEFAULT_VIDEO_POSTER;
+  const sectionBadge = badgeText?.trim() || (isDE ? 'Video-Einblick' : 'Video Overview');
+  const sectionTitle = title?.trim() || (isDE ? 'So funktioniert EViral' : 'How EViral Works');
+  const sectionSubtitle =
+    subtitle?.trim() ||
+    (isDE
+      ? 'Ein kurzer Überblick über unsere Lösungen für Reputation, Website und KI-Telefonie.'
+      : 'A quick overview of our solutions for reputation, websites, and AI phone automation.');
 
   return (
     <section className="py-20 bg-[var(--surface)] border-y border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-10">
-            <span className="badge mb-4">{isDE ? 'Video-Einblick' : 'Video Overview'}</span>
-            <h2 className="section-title mb-3">
-              {isDE ? 'So funktioniert EViral in 90 Sekunden' : 'How EViral Works in 90 Seconds'}
-            </h2>
-            <p className="section-subtitle mx-auto">
-              {isDE
-                ? 'Ein kurzer Überblick über unsere Lösungen für Reputation, Website und KI-Telefonie.'
-                : 'A quick overview of our solutions for reputation, websites, and AI phone automation.'}
-            </p>
+            <span className="badge mb-4">{sectionBadge}</span>
+            <h2 className="section-title mb-3">{sectionTitle}</h2>
+            <p className="section-subtitle mx-auto">{sectionSubtitle}</p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={120}>
-          <div className="relative rounded-3xl overflow-hidden border border-[var(--border)] shadow-lift-lg bg-black">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="relative rounded-3xl overflow-hidden border border-[var(--border)] shadow-lift-lg bg-black">
             {failedToLoad ? (
               <div className="aspect-video w-full flex flex-col items-center justify-center text-center px-6 bg-[var(--off-black)] text-white">
                 <h3 className="text-xl font-bold mb-2">
@@ -51,25 +59,28 @@ export default function VideoSection({
                     ? 'Buchen Sie ein Gespräch und wir zeigen Ihnen die Plattform live in einer persönlichen Demo.'
                     : 'Book a call and we will walk you through the platform live in a personal demo.'}
                 </p>
-                <Link href={`/${locale}/booking`} className="btn-primary">
+                <Link href="/booking" className="btn-primary">
                   {isDE ? 'Demo buchen' : 'Book a Demo'}
                 </Link>
               </div>
             ) : (
-              <video
-                className="w-full h-auto max-h-[70vh]"
-                controls
-                preload="metadata"
-                playsInline
-                poster={posterSrc}
-                onError={() => setFailedToLoad(true)}
-              >
-                <source src={videoSrc} type="video/mp4" />
-                {isDE
-                  ? 'Ihr Browser unterstützt das Video-Tag nicht.'
-                  : 'Your browser does not support the video tag.'}
-              </video>
+              <div className="relative aspect-video w-full bg-black">
+                <video
+                  className="h-full w-full object-contain"
+                  controls
+                  preload="metadata"
+                  playsInline
+                  poster={posterSrc}
+                  onError={() => setFailedToLoad(true)}
+                >
+                  <source src={videoSrc} type="video/mp4" />
+                  {isDE
+                    ? 'Ihr Browser unterstützt das Video-Tag nicht.'
+                    : 'Your browser does not support the video tag.'}
+                </video>
+              </div>
             )}
+            </div>
           </div>
         </AnimatedSection>
       </div>

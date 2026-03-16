@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, Shield, Zap, Users, Heart, Lightbulb, Globe } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
+import { Link } from '@/lib/navigation';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return { title: locale === 'de' ? 'Über uns' : 'About Us' };
@@ -173,7 +173,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <AnimatedSection>
           <h2 className="section-title mb-4">{isDE ? 'Gemeinsam wachsen' : "Let's Grow Together"}</h2>
           <p className="text-gray-500 mb-8">{isDE ? 'Buchen Sie ein kostenloses Beratungsgespräch und erfahren Sie, wie wir Ihr Unternehmen voranbringen können.' : 'Book a free consultation and discover how we can take your business to the next level.'}</p>
-          <Link href={`/${locale}/booking`} className="btn-primary">
+          <Link href="/booking" className="btn-primary">
             {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={18} />
           </Link>
         </AnimatedSection>

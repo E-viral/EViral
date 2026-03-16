@@ -1,9 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, Star, Globe, Phone, Check, TrendingUp, Shield, Zap, Users, ArrowUpRight } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
-import VideoSection from '@/components/sections/VideoSection';
+import { Link, type AppHref } from '@/lib/navigation';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return {
@@ -30,10 +29,19 @@ const platformLogos = [
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
   const isDE = locale === 'de';
 
-  const services = [
+  const services: Array<{
+    icon: typeof Star;
+    href: AppHref;
+    color: string;
+    tag: string;
+    title: string;
+    desc: string;
+    stat: string;
+    statLabel: string;
+  }> = [
     {
       icon: Star,
-      href: `/${locale}/services/reputation-management`,
+      href: '/services/reputation-management',
       color: 'from-yellow-400 to-orange-400',
       tag: isDE ? 'Reputationsmanagement' : 'Reputation Management',
       title: isDE ? 'Mehr Bewertungen. Mehr Vertrauen.' : 'More Reviews. More Trust.',
@@ -44,7 +52,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
     },
     {
       icon: Globe,
-      href: `/${locale}/services/websites`,
+      href: '/services/websites',
       color: 'from-blue-500 to-indigo-500',
       tag: isDE ? 'Professionelle Websites' : 'Professional Websites',
       title: isDE ? 'Ihre Website. Unser Job.' : 'Your Website. Our Job.',
@@ -55,7 +63,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
     },
     {
       icon: Phone,
-      href: `/${locale}/services/ai-phone-assistant`,
+      href: '/services/ai-phone-assistant',
       color: 'from-green-500 to-emerald-500',
       tag: isDE ? 'KI-Telefonassistent' : 'AI Phone Assistant',
       title: isDE ? 'Kein Anruf geht verloren.' : 'Never Miss a Call.',
@@ -144,10 +152,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               </p>
 
               <div className="hero-cta flex flex-wrap gap-4 mb-12">
-                <Link href={`/${locale}/booking`} className="btn-primary text-base px-8 py-4">
+                <Link href="/booking" className="btn-primary text-base px-8 py-4">
                   {isDE ? 'Kostenlose Beratung' : 'Free Consultation'} <ArrowRight size={18} />
                 </Link>
-                <Link href={`/${locale}/services/reputation-management`} className="btn-secondary text-base px-8 py-4">
+                <Link href="/services/reputation-management" className="btn-secondary text-base px-8 py-4">
                   {isDE ? 'Leistungen entdecken' : 'Explore Services'}
                 </Link>
               </div>
@@ -252,9 +260,6 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
-
-      {/* ── VIDEO SECTION ─────────────────────────── */}
-      <VideoSection locale={locale} />
 
       {/* ── MARQUEE PLATFORMS ────────────────────── */}
       <section className="py-5 border-t border-b border-[var(--border)] bg-[var(--surface)] overflow-hidden">
@@ -442,7 +447,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
 
           <AnimatedSection delay={500}>
             <div className="text-center mt-10">
-              <Link href={`/${locale}/services/ai-phone-assistant`}
+              <Link href="/services/ai-phone-assistant"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[var(--black)] font-bold rounded-xl hover:bg-gray-100 transition-all hover:-translate-y-1 hover:shadow-lg">
                 {isDE ? 'KI-Assistent entdecken' : 'Explore AI Assistant'} <ArrowRight size={16} />
               </Link>
@@ -485,10 +490,10 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               ))}
             </ul>
             <div className="flex gap-4">
-              <Link href={`/${locale}/services/reputation-management`} className="btn-primary">
+              <Link href="/services/reputation-management" className="btn-primary">
                 {isDE ? 'Mehr erfahren' : 'Learn more'} <ArrowUpRight size={16} />
               </Link>
-              <Link href={`/${locale}/booking`} className="btn-secondary">
+              <Link href="/booking" className="btn-secondary">
                 {isDE ? 'Demo buchen' : 'Book demo'}
               </Link>
             </div>
@@ -542,11 +547,11 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 : 'Book a free 30-minute consultation and discover how we take your business to the next level.'}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href={`/${locale}/booking`}
+              <Link href="/booking"
                 className="inline-flex items-center gap-2 px-9 py-4.5 bg-white text-[var(--black)] font-bold rounded-xl text-base hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300" style={{ paddingTop: '1.1rem', paddingBottom: '1.1rem' }}>
                 {isDE ? 'Kostenlose Beratung buchen' : 'Book Free Consultation'} <ArrowRight size={20} />
               </Link>
-              <Link href={`/${locale}/partner`}
+              <Link href="/partner"
                 className="inline-flex items-center gap-2 px-9 py-4.5 text-white border border-white/20 font-semibold rounded-xl text-base hover:bg-white/10 transition-all duration-300" style={{ paddingTop: '1.1rem', paddingBottom: '1.1rem' }}>
                 {isDE ? 'Partner werden' : 'Become a Partner'}
               </Link>

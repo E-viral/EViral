@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, Globe } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import ProcessRoadmap from '@/components/sections/ProcessRoadmap';
@@ -7,7 +6,8 @@ import PricingCards from '@/components/sections/PricingCards';
 import ComparisonTable from '@/components/sections/ComparisonTable';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import DomainChecker from '@/components/sections/DomainChecker';
-import { websiteDemoCompanies } from '@/lib/website-demo-data';
+import { Link } from '@/lib/navigation';
+import { getWebsiteDemoSlug, websiteDemoCompanies } from '@/lib/website-demo-data';
 import { websitePlanContent } from '../../../../lib/website-plan-content';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -138,7 +138,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
   ];
 
   const demoTemplates = websiteDemoCompanies.map((demo) => ({
-    slug: demo.slug,
+    slug: getWebsiteDemoSlug(demo, localeKey),
     name: isDE ? demo.name.de : demo.name.en,
     emoji: demo.emoji,
     desc: isDE ? demo.cardDescription.de : demo.cardDescription.en,
@@ -162,7 +162,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
             <p className="text-xl text-gray-400 max-w-2xl mb-10">
               {isDE ? 'Wir gestalten, bauen und pflegen Ihre Website, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.' : 'We design, build, and maintain your website so you can focus on running your business.'}
             </p>
-            <Link href={`/${locale}/booking`}
+            <Link href="/booking"
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Beratung buchen' : 'Book Consultation'} <ArrowRight size={18} />
             </Link>
@@ -217,7 +217,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
           {demoTemplates.map((t, i) => (
             <AnimatedSection key={i} delay={i * 80}>
               <Link
-                href={`/${locale}/services/websites/demo/${t.slug}`}
+                href={{ pathname: '/services/websites/demo/[slug]', params: { slug: t.slug } }}
                 className="card-sticker flex items-center gap-4 hover:scale-[1.02] transition-transform group"
               >
                 <div
@@ -254,7 +254,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="section-title text-center mb-10">{isDE ? 'Domain-Verfügbarkeit prüfen' : 'Check Domain Availability'}</h2>
-            <DomainChecker bookingHref={`/${locale}/booking`} />
+            <DomainChecker bookingHref="/booking" />
           </AnimatedSection>
         </div>
       </section>
@@ -267,7 +267,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
             <p className="section-subtitle mx-auto">{isDE ? '€299 einmalige Bereitstellungsgebühr · 24 Monate Mindestlaufzeit' : '€299 one-time setup fee · 24-month minimum term'}</p>
           </div>
         </AnimatedSection>
-        <PricingCards plans={plans} showSetupFee bookingHref={`/${locale}/booking`} paymentLinks={paymentLinks} />
+        <PricingCards plans={plans} showSetupFee bookingHref="/booking" paymentLinks={paymentLinks} />
       </section>
 
       {/* Comparison */}
@@ -293,7 +293,7 @@ export default function WebsitesPage({ params: { locale } }: { params: { locale:
               {isDE ? 'Bereit für Ihre neue Website?' : 'Ready for your new website?'}
             </h2>
             <p className="text-gray-400 mb-8">{isDE ? 'Buchen Sie jetzt ein kostenloses Beratungsgespräch.' : 'Book a free consultation call today.'}</p>
-            <Link href={`/${locale}/booking`}
+            <Link href="/booking"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">
               {isDE ? 'Jetzt starten' : 'Get started'} <ArrowRight size={18} />
             </Link>
