@@ -59,7 +59,7 @@ export default function Footer({ locale }: FooterProps) {
         {/* Brand */}
         <div className="col-span-2">
           <Link href={`/${locale}`} className="inline-block mb-5">
-            <span className="text-2xl font-black tracking-tighter text-white">eviral</span>
+            <span className="text-2xl font-black tracking-tighter text-white">Eviral</span>
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
             {isDE
