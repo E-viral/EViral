@@ -68,7 +68,7 @@ export default function Navbar({ locale }: NavbarProps) {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 bg-[#080808] rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:rotate-6">
-              <span className="text-white text-xs font-black">e.</span>
+              <span className="text-white text-xs font-black">e<span className="text-[#e8642a]">.</span></span>
             </div>
             <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-lg font-bold tracking-tight text-[#080808]">
               eviral<span className="text-[#e8642a]">.</span>

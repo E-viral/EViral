@@ -7,18 +7,18 @@ interface Props { steps: Step[]; title?: string; subtitle?: string; dark?: boole
 
 export default function ProcessRoadmap({ steps, title, subtitle, dark }: Props) {
   return (
-    <div className="py-16">
+    <div className="py-12 md:py-16">
       {title && (
         <AnimatedSection>
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 md:mb-12">
             <h2 className={`section-title mb-0 ${dark ? 'text-white' : ''}`}>{title}</h2>
             {subtitle && <p className={`section-subtitle mx-auto text-center ${dark ? 'text-gray-400' : ''}`}>{subtitle}</p>}
           </div>
         </AnimatedSection>
       )}
-      <div className="grid md:grid-cols-4 gap-6 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
         {/* Connecting line (desktop) */}
-        <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px"
+        <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px"
           style={{ background: 'linear-gradient(to right, transparent, var(--border2) 15%, var(--border2) 85%, transparent)' }} />
 
         {steps.map((step, i) => (

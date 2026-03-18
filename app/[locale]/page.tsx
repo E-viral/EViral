@@ -6,7 +6,6 @@ import { Link, type AppHref } from '@/lib/navigation';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   return {
-    title: locale === 'de' ? 'EViral — Digitale Wachstumslösungen' : 'EViral — Digital Growth Solutions',
     description: locale === 'de'
       ? 'Reputationsmanagement, professionelle Websites und KI-Telefonassistenten für Ihr Unternehmen.'
       : 'Reputation management, professional websites and AI phone assistants for your business.',

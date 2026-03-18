@@ -63,7 +63,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
     <>
       {/* Toggle */}
       <AnimatedSection>
-        <div className="flex items-center justify-center gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           <div className="inline-flex items-center p-1 rounded-full bg-[var(--surface2)] border border-[var(--border2)]">
             <button
               type="button"
@@ -71,7 +71,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
                 setYearly(false);
                 setCtaErrors({});
               }}
-              className={`h-9 px-4 rounded-full text-sm font-semibold transition-all duration-200 ${!yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
+              className={`h-9 px-3 sm:px-4 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${!yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
               aria-pressed={!yearly}
             >
               Monthly
@@ -82,7 +82,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
                 setYearly(true);
                 setCtaErrors({});
               }}
-              className={`h-9 px-4 rounded-full text-sm font-semibold transition-all duration-200 ${yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
+              className={`h-9 px-3 sm:px-4 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${yearly ? 'bg-[var(--black)] text-white shadow-sm' : 'text-[var(--muted)] hover:text-[var(--black)]'}`}
               aria-pressed={yearly}
             >
               Yearly
@@ -94,7 +94,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
         </div>
       </AnimatedSection>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan, i) => {
           const isFeatured = !!plan.badge;
           const billingMode: BillingMode = yearly ? 'yearly' : 'monthly';
@@ -105,7 +105,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
           const billingLabel = '/mo';
           const checkoutHref = paymentLinks?.[plan.name]?.[billingMode];
           const planError = ctaErrors[plan.name];
-          const ctaClassName = `flex items-center justify-center gap-2 w-full h-12 rounded-xl font-bold text-sm flex-shrink-0 whitespace-nowrap transition-all duration-200
+          const ctaClassName = `flex items-center justify-center gap-2 w-full h-12 rounded-xl font-bold text-sm flex-shrink-0 transition-all duration-200
             ${isFeatured
               ? 'bg-[var(--accent)] text-white hover:bg-[var(--accent2)] hover:shadow-lg'
               : 'bg-[var(--black)] text-white hover:bg-[var(--off-black)] hover:shadow-md'
@@ -113,7 +113,7 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
 
           return (
             <AnimatedSection key={i} delay={i * 100} direction="up">
-              <div className={`relative rounded-3xl overflow-hidden h-full flex flex-col transition-all duration-300
+              <div className={`relative rounded-3xl overflow-hidden min-w-0 h-full flex flex-col transition-all duration-300
                 ${isFeatured
                   ? 'bg-[var(--off-black)] border-2 border-[var(--accent)] shadow-[0_0_60px_rgba(232,100,42,0.2)]'
                   : 'bg-white border border-[var(--border)] hover:border-[var(--border2)] hover:shadow-lift'
@@ -126,10 +126,10 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
                   </div>
                 )}
 
-                <div className={`p-7 flex flex-col flex-1 ${plan.badge ? 'pt-10' : ''}`}>
+                <div className={`p-5 sm:p-7 flex flex-col flex-1 ${plan.badge ? 'pt-10' : ''}`}>
                   {/* Header — fixed height so all cards stay aligned */}
-                  <div className="mb-4 h-14">
-                    <h3 className={`text-xl font-black tracking-tight mb-1 ${isFeatured ? 'text-white' : ''}`}>{plan.name}</h3>
+                  <div className="mb-4 h-auto min-h-14">
+                    <h3 className={`text-lg sm:text-xl font-black tracking-tight leading-tight break-words mb-1 ${isFeatured ? 'text-white' : ''}`}>{plan.name}</h3>
                     {plan.minutes && (
                       <p className={`text-xs ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>
                         {plan.minutes.toLocaleString()} min/mo · {plan.extraMin}/extra min
@@ -138,9 +138,9 @@ export default function PricingCards({ plans, showSetupFee, bookingHref = '/book
                   </div>
 
                   {/* Price — fixed height so all cards stay aligned */}
-                  <div className="mb-6 h-28">
+                  <div className="mb-6 h-24 sm:h-28">
                     <div className="flex items-end gap-1 mb-1">
-                      <span className={`text-5xl font-black tracking-tighter leading-none ${isFeatured ? 'text-white' : ''}`}>
+                      <span className={`text-4xl sm:text-5xl font-black tracking-tighter leading-none ${isFeatured ? 'text-white' : ''}`}>
                         €{formatEuro(price)}
                       </span>
                       <span className={`text-sm pb-1 ${isFeatured ? 'text-gray-400' : 'text-[var(--muted)]'}`}>{billingLabel}</span>

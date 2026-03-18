@@ -7,8 +7,14 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: { default: 'EViral — Digital Growth Agency', template: '%s | EViral' },
+  title: { default: 'eviral. - Digital Growth Agency', template: '%s | eviral' },
   description: 'Reputation management, professional websites and AI phone assistant for your business.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=2', type: 'image/x-icon' },
+    ],
+    shortcut: ['/favicon.ico?v=2'],
+  },
 };
 
 export default async function LocaleLayout({

@@ -137,17 +137,17 @@ export default function ReputationPage({ params: { locale } }: { params: { local
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <AnimatedSection>
             <div className="badge mb-6" style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>
               <Star size={12} className="mr-1" /> {isDE ? 'Reputationsmanagement' : 'Reputation Management'}
             </div>
-            <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white mb-6 max-w-4xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 max-w-4xl">
               {isDE ? 'Übernehmen Sie die Kontrolle über Ihre Online-Reputation' : 'Take Control of Your Online Reputation'}
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mb-10">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-10">
               {isDE ? 'Automatisch Bewertungen sammeln, verwalten und beantworten – auf Google, Yelp, TripAdvisor und 15+ Plattformen.' : 'Automatically collect, manage, and respond to reviews across Google, Yelp, TripAdvisor, and 15+ platforms.'}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -161,13 +161,13 @@ export default function ReputationPage({ params: { locale } }: { params: { local
       </section>
 
       {/* Why it matters */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-12">
             <h2 className="section-title">{isDE ? 'Warum Reputationsmanagement so wichtig ist' : 'Why Reputation Management Matters'}</h2>
           </div>
         </AnimatedSection>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {(isDE ? [
             { icon: '⭐', val: '97%', label: 'der Verbraucher lesen Bewertungen vor einer Kaufentscheidung' },
             { icon: '📈', val: '+40%', label: 'mehr Konversionen mit einem Durchschnitt von 4,5 Sternen' },
@@ -178,9 +178,9 @@ export default function ReputationPage({ params: { locale } }: { params: { local
             { icon: '💬', val: '89%', label: 'of customers read responses to negative reviews' },
           ]).map((s, i) => (
             <AnimatedSection key={i} delay={i * 100}>
-              <div className="card-sticker text-center py-10">
+              <div className="card-sticker text-center py-8 sm:py-10">
                 <div className="text-4xl mb-3">{s.icon}</div>
-                <div className="text-4xl font-black tracking-tighter mb-2">{s.val}</div>
+                <div className="text-3xl sm:text-4xl font-black tracking-tighter mb-2">{s.val}</div>
                 <div className="text-sm text-gray-500 leading-relaxed">{s.label}</div>
               </div>
             </AnimatedSection>

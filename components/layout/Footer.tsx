@@ -59,7 +59,7 @@ export default function Footer({ locale }: FooterProps) {
         {/* Brand */}
         <div className="col-span-2">
           <Link href={`/${locale}`} className="inline-block mb-5">
-            <span className="text-2xl font-black tracking-tighter text-white">Eviral</span>
+            <span className="text-2xl font-black tracking-tighter text-white">eviral<span className="text-[#e8642a]">.</span></span>
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
             {isDE
@@ -106,7 +106,7 @@ export default function Footer({ locale }: FooterProps) {
       {/* Bottom bar */}
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">© {year} EViral. {isDE ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}</p>
+          <p className="text-xs text-gray-600">© {year} eviral<span className="text-[#e8642a]">.</span> {isDE ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}</p>
           <div className="flex items-center gap-4">
             <Link href={`/de`} className="text-xs text-gray-600 hover:text-gray-300 uppercase tracking-wider transition-colors">DE</Link>
             <span className="text-gray-700">·</span>

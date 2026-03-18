@@ -39,12 +39,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="py-24 bg-[#F5F5F5]">
+      <section className="py-16 sm:py-24 bg-[#F5F5F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-16 items-center">
             <AnimatedSection>
               <div className="badge mb-6">{isDE ? 'Über EViral' : 'About EViral'}</div>
-              <h1 className="text-5xl font-black tracking-tighter mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter mb-6">
                 {isDE ? 'Wir sind Ihr digitaler Wachstumspartner' : 'We Are Your Digital Growth Partner'}
               </h1>
               <p className="text-gray-600 leading-relaxed mb-6">
@@ -59,15 +59,15 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               </p>
             </AnimatedSection>
             <AnimatedSection delay={200}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {[
                   { val: '500+', label: isDE ? 'Betreute Unternehmen' : 'Businesses served' },
                   { val: '15+', label: isDE ? 'Integrierte Plattformen' : 'Integrated platforms' },
                   { val: '24/7', label: isDE ? 'KI-Unterstützung' : 'AI support' },
                   { val: '3', label: isDE ? 'Kernleistungen' : 'Core services' },
                 ].map((s, i) => (
-                  <div key={i} className="card-sticker text-center py-8">
-                    <div className="text-3xl font-black tracking-tighter mb-1">{s.val}</div>
+                  <div key={i} className="card-sticker text-center py-6 sm:py-8">
+                    <div className="text-2xl sm:text-3xl font-black tracking-tighter mb-1">{s.val}</div>
                     <div className="text-xs text-gray-500">{s.label}</div>
                   </div>
                 ))}
@@ -82,7 +82,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <AnimatedSection>
           <h2 className="section-title text-center mb-12">{isDE ? 'Was wir tun' : 'What We Do'}</h2>
         </AnimatedSection>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {(isDE ? [
             { emoji: '⭐', title: 'Reputationsmanagement', desc: 'Wir helfen Unternehmen dabei, ihre Online-Bewertungen zu überwachen, zu verwalten und aktiv zu steuern – vollautomatisiert mit KI.' },
             { emoji: '🌐', title: 'Professionelle Websites', desc: 'Von der Konzeption bis zur Pflege – wir erstellen professionelle Unternehmenswebsites, die Vertrauen schaffen und Kunden überzeugen.' },
@@ -111,7 +111,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               {isDE ? 'Unsere Werte' : 'Our Values'}
             </h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
               <AnimatedSection key={i} delay={i * 100}>
                 <div className="border border-white/10 rounded-2xl p-6 hover:bg-white/5 transition-colors">
@@ -135,10 +135,10 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
             <p className="section-subtitle mx-auto">{isDE ? 'Was uns als Arbeitgeber auszeichnet' : 'What makes working with us special'}</p>
           </div>
         </AnimatedSection>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           {teamValues.map((v, i) => (
             <AnimatedSection key={i} delay={i * 100}>
-              <div className="card-sticker flex items-start gap-5">
+              <div className="card-sticker flex items-start gap-4 sm:gap-5">
                 <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center flex-shrink-0">
                   <v.icon size={20} className="text-white" />
                 </div>
