@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/[locale]/page": [
+    "/[locale]/partner/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/page.js"
+      "static/chunks/app/[locale]/partner/page.js"
     ],
     "/[locale]/layout": [
       "static/chunks/webpack.js",
@@ -21,25 +21,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
-    "/[locale]/services/websites/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/services/websites/page.js"
-    ],
-    "/[locale]/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/about/page.js"
-    ],
     "/[locale]/services/reputation-management/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/[locale]/services/reputation-management/page.js"
     ],
-    "/[locale]/partner/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/partner/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

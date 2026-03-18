@@ -1,7 +1,6 @@
 {
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/services/websites/page": "app/[locale]/services/websites/page.js",
-  "/[locale]/about/page": "app/[locale]/about/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/[locale]/services/reputation-management/page": "app/[locale]/services/reputation-management/page.js",
   "/[locale]/partner/page": "app/[locale]/partner/page.js"
 }
