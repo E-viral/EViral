@@ -27,6 +27,13 @@ function getCanonicalDePath(pathname: string): string | null {
 }
 
 export default function middleware(request: NextRequest) {
+  // Keep locale detection for all routes, but force the bare root to German.
+  if (request.nextUrl.pathname === '/') {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = '/de';
+    return NextResponse.redirect(redirectUrl, 308);
+  }
+
   const canonicalPath = getCanonicalDePath(request.nextUrl.pathname);
 
   if (canonicalPath && canonicalPath !== request.nextUrl.pathname) {

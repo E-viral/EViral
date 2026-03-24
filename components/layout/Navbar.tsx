@@ -127,7 +127,7 @@ export default function Navbar({ locale }: NavbarProps) {
             <Link href={`/${otherLocale}`} className="px-3 py-1.5 text-xs font-semibold border border-[#e2e0dc] rounded-lg hover:bg-[#f4f3f1] hover:border-[#ccc9c3] transition-all uppercase tracking-widest text-[#666]">
               {otherLocale}
             </Link>
-            <a href="https://app.e-viral.de/#/login" target="_blank" rel="noopener noreferrer"
+            <a href="https://app.eviral.de/#/login" target="_blank" rel="noopener noreferrer"
                className="px-4 py-2 text-sm font-medium text-[#555] hover:text-[#080808] rounded-lg hover:bg-[#f4f3f1] transition-all duration-200">
               {t('login')}
             </a>

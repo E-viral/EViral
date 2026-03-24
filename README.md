@@ -40,9 +40,9 @@ SMTP_USER=             # SMTP username
 SMTP_PASS=             # SMTP password
 CONTACT_EMAIL=info@e-viral.de
 NEXT_PUBLIC_BOOKING_URL=https://calendly.com/e-viral-info/30min
-NEXT_PUBLIC_LOGIN_URL="https://app.e-viral.de/#/login"
-NEXT_PUBLIC_LOGIN_URL_DE="https://app.e-viral.de/#/login?lang=de"
-NEXT_PUBLIC_LOGIN_URL_EN="https://app.e-viral.de/#/login"
+NEXT_PUBLIC_LOGIN_URL="https://app.eviral.de/#/login"
+NEXT_PUBLIC_LOGIN_URL_DE="https://app.eviral.de/#/login?lang=de"
+NEXT_PUBLIC_LOGIN_URL_EN="https://app.eviral.de/#/login"
 NEXT_PUBLIC_BASE_URL=https://e-viral.de
 ```
 

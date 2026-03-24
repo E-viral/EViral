@@ -6,7 +6,7 @@ interface LoginRedirectClientProps {
   locale: string;
 }
 
-const DEFAULT_LOGIN_URL = 'https://app.e-viral.de/#/login';
+const DEFAULT_LOGIN_URL = 'https://app.eviral.de/#/login';
 
 function normalizeLoginUrl(url: string | undefined): string | undefined {
   if (!url) {
@@ -20,7 +20,8 @@ function normalizeLoginUrl(url: string | undefined): string | undefined {
   }
 
   // .env values with an unquoted "#" can be truncated to just the domain.
-  if (/^https?:\/\/app\.e-viral\.de\/?$/i.test(trimmed)) {
+  // Accept both old and new hostnames for backward compatibility.
+  if (/^https?:\/\/app\.e-viral\.de\/?$/i.test(trimmed) || /^https?:\/\/app\.eviral\.de\/?$/i.test(trimmed)) {
     return DEFAULT_LOGIN_URL;
   }
 
