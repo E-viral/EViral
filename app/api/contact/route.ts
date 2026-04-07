@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         });
         await transporter.sendMail({
           from: process.env.SMTP_USER,
-          to: process.env.CONTACT_EMAIL || 'info@e-viral.de',
+          to: process.env.CONTACT_EMAIL || 'info@eviral.de',
           subject: `New contact form submission from ${name || email}`,
           text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nType: ${type}\n\nMessage:\n${message}`,
         });

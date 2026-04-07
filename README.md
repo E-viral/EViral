@@ -38,7 +38,7 @@ SMTP_HOST=             # Email SMTP host (optional, for contact form)
 SMTP_PORT=587          # SMTP port
 SMTP_USER=             # SMTP username
 SMTP_PASS=             # SMTP password
-CONTACT_EMAIL=info@e-viral.de
+CONTACT_EMAIL=info@eviral.de
 NEXT_PUBLIC_BOOKING_URL=https://calendly.com/e-viral-info/30min
 NEXT_PUBLIC_LOGIN_URL="https://app.eviral.de/#/login"
 NEXT_PUBLIC_LOGIN_URL_DE="https://app.eviral.de/#/login?lang=de"

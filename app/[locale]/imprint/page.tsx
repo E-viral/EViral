@@ -21,7 +21,7 @@ Mert Özcan
 
 ## Kontakt
 
-E-Mail: [info@e-viral.de](mailto:info@e-viral.de)
+E-Mail: [info@eviral.de](mailto:info@eviral.de)
 
 ## USt-IdNr.
 
@@ -94,7 +94,7 @@ Mert Özcan
 
 ## Contact
 
-Email: [info@e-viral.de](mailto:info@e-viral.de)
+Email: [info@eviral.de](mailto:info@eviral.de)
 
 ## VAT ID
 

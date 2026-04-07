@@ -197,7 +197,7 @@ export default function PartnerPage({ params: { locale } }: { params: { locale: 
               {isDE ? 'Buchen Sie ein Partner-Gespräch und wir erklären Ihnen alles.' : 'Book a partner call and we\'ll walk you through everything.'}
             </p>
             <p className="text-gray-500 text-sm mb-10">
-              info@e-viral.de
+              info@eviral.de
             </p>
             <Link href="/booking"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 transition-all">

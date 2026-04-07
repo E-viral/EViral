@@ -38,7 +38,7 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
                   <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center"><Mail size={16} className="text-white" /></div>
                   <div>
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{isDE ? 'E-Mail' : 'Email'}</div>
-                    <a href="mailto:info@e-viral.de" className="font-semibold hover:underline">info@e-viral.de</a>
+                    <a href="mailto:info@eviral.de" className="font-semibold hover:underline">info@eviral.de</a>
                   </div>
                 </div>
               </div>

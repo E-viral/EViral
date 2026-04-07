@@ -66,9 +66,9 @@ export default function Footer({ locale }: FooterProps) {
               ? 'Die Full-Service-Digitalagentur für smarte Unternehmen. Reputation, Websites und KI aus einer Hand.'
               : 'The full-service digital agency for smart businesses. Reputation, websites and AI from one partner.'}
           </p>
-          <a href="mailto:info@e-viral.de" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group">
+          <a href="mailto:info@eviral.de" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group">
             <Mail size={14} className="group-hover:text-[var(--accent)] transition-colors" />
-            info@e-viral.de
+            info@eviral.de
           </a>
           {/* Service icons */}
           <div className="flex gap-3 mt-6">
